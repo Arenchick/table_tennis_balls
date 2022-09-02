@@ -4,8 +4,8 @@ const ApiError = require('../error/apiError')
 class ProducerCountryController {
     async Create(request,response,next){
         try {
-            const {name} = request.body
-            const producerCountry = await ProducerCountry.create({name})
+            const {value} = request.body
+            const producerCountry = await ProducerCountry.create({value})
             return response.json(producerCountry)
         }
         catch (error){
