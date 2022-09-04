@@ -1,0 +1,53 @@
+html {
+  font-size: 10px;
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 8px;
+  }
+}
+@media (max-width: 568px) {
+  html {
+    font-size: 6px;
+  }
+}
+@media (max-width: 430px) {
+  html {
+    font-size: 4px;
+  }
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+input,
+textarea {
+  padding: 0;
+  border: none;
+  outline: none;
+}
+.Balls {
+  padding: 0;
+  margin: 0;
+}
+/*# sourceMappingURL=App.css.map */
