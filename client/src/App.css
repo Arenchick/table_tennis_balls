@@ -46,11 +46,25 @@ textarea {
   border: none;
   outline: none;
 }
-.Container {
+.container {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  background-color: #f0f1f1;
+}
+.header {
+  background-color: #fffafa;
+  width: 100%;
+  max-height: 5rem;
+}
+.header:after {
+  content: "";
+  display: inline-block;
+  background-color: #403838;
+  margin: 0 3.125rem;
+  bottom: -0.3rem;
+  left: 0;
+  width: 80%;
+  height: 0.16rem;
 }
 /*# sourceMappingURL=App.css.map */

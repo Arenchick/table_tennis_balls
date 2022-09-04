@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Container = (props) => {
+const Header = (props) => {
     return (
-        <div className={'container'}>
+        <div className={'header'}>
             {props.children}
         </div>
     );
 };
 
-export default Container;
+export default Header;
