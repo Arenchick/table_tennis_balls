@@ -1,10 +1,9 @@
 import React from 'react';
+import Container from "../components/UI/Container/Container";
 
 const Balls = () => {
     return (
-        <div>
-            Balls
-        </div>
+        <h1>Balls</h1>
     );
 };
 

@@ -46,8 +46,11 @@ textarea {
   border: none;
   outline: none;
 }
-.Balls {
-  padding: 0;
-  margin: 0;
+.Container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  background-color: #f0f1f1;
 }
 /*# sourceMappingURL=App.css.map */
