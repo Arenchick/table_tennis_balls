@@ -48,23 +48,53 @@ textarea {
 }
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 .header {
   background-color: #fffafa;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-height: 5rem;
+  text-align: center;
 }
 .header:after {
   content: "";
   display: inline-block;
   background-color: #403838;
-  margin: 0 3.125rem;
-  bottom: -0.3rem;
-  left: 0;
-  width: 80%;
+  margin-top: 1.25rem;
+  width: 87.5%;
   height: 0.16rem;
+}
+.tennisInput {
+  display: inline-block;
+  border: none;
+  border-radius: 1rem;
+  resize: none;
+  width: 75%;
+  padding: 1rem 2rem;
+  margin: 3rem 0;
+  font-family: "Calibri Light";
+  color: rgba(64, 56, 56, 0.8);
+  font-weight: 800;
+  font-size: 1.5rem;
+  background: #e6e1e1;
+  transition: color 0.2s linear;
+}
+.tennisInput:focus {
+  background: #c9bcb8;
+}
+::-webkit-input-placeholder {
+  color: rgba(64, 56, 56, 0.8);
+  font-size: 2rem;
+  font-weight: 400;
+  transition: color 0.2s linear;
+}
+:focus::-webkit-input-placeholder {
+  color: transparent;
 }
 /*# sourceMappingURL=App.css.map */

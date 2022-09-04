@@ -1,9 +1,23 @@
-import React from 'react';
-import Container from "../components/UI/Container/Container";
+import React, {useState} from 'react';
+import TennisInput from "../components/UI/Input/TennisInput";
 
 const Balls = () => {
+
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const inputOnChange = (event) => {
+        console.log(event.target.value)
+        setSearchQuery(event.target.value)
+    }
+
     return (
-        <h1>Balls</h1>
+        <div>
+            <TennisInput
+                value = {searchQuery}
+                onChange = {inputOnChange}
+                placeholder={'Поиск'}
+            />
+        </div>
     );
 };
 
