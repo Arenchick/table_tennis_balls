@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import TennisInput from "../components/UI/Input/TennisInput";
+import BallsList from "../components/UI/Balls/BallsList";
 
 const Balls = () => {
 
     const [searchQuery, setSearchQuery] = useState('')
 
     const inputOnChange = (event) => {
-        console.log(event.target.value)
         setSearchQuery(event.target.value)
     }
+
 
     return (
         <div>
@@ -17,6 +18,7 @@ const Balls = () => {
                 onChange = {inputOnChange}
                 placeholder={'Поиск'}
             />
+            <BallsList/>
         </div>
     );
 };

@@ -18,9 +18,13 @@
 
   background: @lightBackground;
 
-  transition: color .2s linear;
+  transition: background-color .2s linear;
 
-&:focus {
+  &:focus {
+    background: @darkBackground;
+  }
+
+  &:hover {
   background: @darkBackground;
 }
 }

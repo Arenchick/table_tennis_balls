@@ -8,12 +8,14 @@ import Header from "./components/UI/Header/Header";
 const App = () => {
   return (
     <BrowserRouter>
-        <Container>
-            <Header>
-                Header
-            </Header>
-            <AppRouter />
-        </Container>
+        <div className='background'>
+            <Container>
+                <Header>
+                    Header
+                </Header>
+                <AppRouter />
+            </Container>
+        </div>
     </BrowserRouter>
   );
 }

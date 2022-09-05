@@ -1,5 +1,6 @@
 html {
   font-size: 1rem;
+  height: 100%;
 }
 @media (max-width: 1200px) {
   html {
@@ -18,9 +19,17 @@ html {
 }
 body {
   margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   font-size: 1.5rem;
   font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 *,
 *:before,
@@ -46,11 +55,21 @@ textarea {
   border: none;
   outline: none;
 }
+.background {
+  width: 100%;
+  height: 100%;
+  background: #403838 url(Assets/Background.jpg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .container {
   width: 100%;
+  height: 100%;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  background-color: #fffafa;
 }
 .header {
   background-color: #fffafa;
@@ -83,9 +102,12 @@ textarea {
   font-weight: 800;
   font-size: 1.5rem;
   background: #e6e1e1;
-  transition: color 0.2s linear;
+  transition: background-color 0.2s linear;
 }
 .tennisInput:focus {
+  background: #c9bcb8;
+}
+.tennisInput:hover {
   background: #c9bcb8;
 }
 ::-webkit-input-placeholder {
@@ -96,5 +118,39 @@ textarea {
 }
 :focus::-webkit-input-placeholder {
   color: transparent;
+}
+.ball_item {
+  overflow: hidden;
+  cursor: pointer;
+  width: 33.3333%;
+  max-width: 187.5px;
+  margin: 3.125rem 42.875px;
+  border-radius: 0.625rem;
+  color: #403838;
+  background-color: #e6e1e1;
+  transition: background-color 0.2s linear;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+}
+.ball_item:hover {
+  background-color: #c9bcb8;
+}
+.ball_item_name {
+  font-size: 1.125rem;
+  margin: 0 0.625rem 0.625rem 0.625rem;
+  text-align: left;
+}
+.ball_item_price {
+  font-size: 1.125rem;
+  font-family: Impact;
+  font-weight: unset;
+  margin: 0.625rem;
+  text-align: left;
+}
+.balls_list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 /*# sourceMappingURL=App.css.map */
