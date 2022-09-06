@@ -1,15 +1,16 @@
 import {makeAutoObservable} from "mobx";
 import itemImage from '../Assets/ItemImage.jpg'
+import itemImage2 from '../Assets/ItemImage2.jpg'
 
 export default class BallStore {
     constructor() {
         this._balls = [
-            {id: 1, name:'asd',price: "5000 р.", image: itemImage},
+            {id: 1, name:'asd',price: "5000 р.", image: itemImage2},
             {id: 2, name:'asdasd',price: "5000 р.", image: itemImage},
-            {id: 3, name:'asdasdda',price: "5000 р.", image: itemImage},
+            {id: 3, name:'asdasdda',price: "5000 р.", image: itemImage2},
             {id: 4, name:'asdasddasda',price: "5000 р.", image: itemImage},
             {id: 5, name:'asdasddasd',price: "5000 р.", image: itemImage},
-            {id: 6, name:'asdasddassssss',price: "5000 р.", image: itemImage}
+            {id: 6, name:'asdasddassssss',price: "5000 р.", image: itemImage2}
         ]
         this._ballsInfo = []
         makeAutoObservable(this)

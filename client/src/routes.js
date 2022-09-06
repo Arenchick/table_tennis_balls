@@ -30,7 +30,7 @@ export const publicRoutes = [
         component: Auth
     },
     {
-        path: BALL_PAGE_ROUTE,
+        path: `${BALL_PAGE_ROUTE}/:id`,
         component: BallPage
     }
 ]

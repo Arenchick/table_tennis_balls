@@ -25,10 +25,17 @@
     }
 }
 
+.ball_item_buy{
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+}
+
 .ball_item_name{
   font-size: 1.125rem;
 
-  margin: 0 .625rem .625rem .625rem;
+  margin: 0 .625rem .4rem .625rem;
 
   text-align: left;
 }
@@ -41,4 +48,27 @@
   margin: .625rem;
 
   text-align: left;
+}
+
+.ball_item_basket_button{
+  width: 2rem;
+  height: 2rem;
+
+  padding: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: @white;
+  transition: background-color .2s linear;
+
+  border-radius: 5px;
+
+  margin: 10px;
+
+  &:hover {
+    background-color: @lightBackground;
+
+  }
 }

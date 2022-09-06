@@ -50,7 +50,9 @@ a {
   text-decoration: none;
 }
 input,
-textarea {
+textarea,
+select,
+option {
   padding: 0;
   border: none;
   outline: none;
@@ -134,9 +136,14 @@ textarea {
 .ball_item:hover {
   background-color: #c9bcb8;
 }
+.ball_item_buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .ball_item_name {
   font-size: 1.125rem;
-  margin: 0 0.625rem 0.625rem 0.625rem;
+  margin: 0 0.625rem 0.4rem 0.625rem;
   text-align: left;
 }
 .ball_item_price {
@@ -146,11 +153,102 @@ textarea {
   margin: 0.625rem;
   text-align: left;
 }
+.ball_item_basket_button {
+  width: 2rem;
+  height: 2rem;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+  border-radius: 5px;
+  margin: 10px;
+}
+.ball_item_basket_button:hover {
+  background-color: #e6e1e1;
+}
 .balls_list {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+.Filter_Input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.Filter_Input_Span {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  color: #403838;
+}
+.Filter_Input_Span:checked::before {
+  background-color: #c9bcb8;
+}
+.Filter_Input_Span:not(:disabled):not(:checked):hover::before {
+  border-color: #c9bcb8;
+}
+.Filter_Input_Span:not(:disabled):active::before {
+  background-color: #e6e1e1;
+}
+.Filter_Input:checked + .Filter_Input_Span::before {
+  background-color: #c9bcb8;
+}
+.Filter_Input_Span::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #e6e1e1;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+.Filter {
+  margin: 1rem;
+}
+.Filter_Container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.Filter_List {
+  display: flex;
+  color: #403838;
+}
+.Filter_Button {
+  max-width: 8.5rem;
+  color: #403838;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 125px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+}
+.Filter_Button:hover {
+  background-color: #e6e1e1;
+}
+.Filter_Reset_Button {
+  color: #403838;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+}
+.Filter_Reset_Button:hover {
+  background-color: #e6e1e1;
 }
 /*# sourceMappingURL=App.css.map */
