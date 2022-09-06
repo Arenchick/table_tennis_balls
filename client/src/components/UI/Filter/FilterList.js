@@ -5,15 +5,8 @@ import filterPic from '../../../Assets/Filter.png'
 const FilterList = () => {
 
     const [isHidden, setHidden] = useState(true)
-    const [isReset, setReset] = useState(true)
-
     const changeHidden = () => {
         setHidden(!isHidden)
-    }
-
-    const reset = () => {
-        setReset(true)
-
     }
 
     const filters = [
@@ -48,12 +41,8 @@ const FilterList = () => {
                 <div className={'Filter_Container'}>
                     <div className={'Filter_List'}>
                         {filters.map(filter =>
-                            <Filter key={filter.id} filter={filter} reset={reset}/>
+                            <Filter key={filter.id} filter={filter}/>
                         )}
-                    </div>
-                    <div className={'Filter_Reset_Button'}
-                         onClick={reset}>
-                        <p>Сбросить</p>
                     </div>
                 </div>
             </div>

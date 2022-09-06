@@ -1,7 +1,7 @@
 import React from 'react';
 import FilterItem from "./FilterItem";
 
-const Filter = ({filter, reset}) => {
+const Filter = ({filter}) => {
     return (
         <div className={'Filter'}>
             <div>
