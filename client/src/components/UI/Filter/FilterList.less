@@ -1,0 +1,52 @@
+// main: ../../../App.less
+
+.Filter_Container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.Filter_List{
+  display: flex;
+
+  color: @dark;
+}
+
+.Filter_Button{
+  max-width: 8.5rem;
+
+  color: @dark;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-left: 125px;
+  padding: 5px;
+
+  border-radius: 10px;
+  background-color: @white;
+  transition: background-color .2s linear;
+
+  &:hover{
+    background-color: @lightBackground;
+  }
+}
+
+.Filter_Reset_Button{
+  color: @dark;
+
+  cursor: pointer;
+
+  padding: 5px;
+
+  border-radius: 10px;
+  background-color: @white;
+  transition: background-color .2s linear;
+
+  &:hover{
+    background-color: @lightBackground;
+  }
+}

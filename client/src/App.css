@@ -1,0 +1,254 @@
+html {
+  font-size: 1rem;
+  height: 100%;
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 568px) {
+  html {
+    font-size: 0.5rem;
+  }
+}
+@media (max-width: 430px) {
+  html {
+    font-size: 0.3rem;
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+input,
+textarea,
+select,
+option {
+  padding: 0;
+  border: none;
+  outline: none;
+}
+.background {
+  width: 100%;
+  height: 100%;
+  background: #403838 url(Assets/Background.jpg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  background-color: #fffafa;
+}
+.header {
+  background-color: #fffafa;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-height: 5rem;
+  text-align: center;
+}
+.header:after {
+  content: "";
+  display: inline-block;
+  background-color: #403838;
+  margin-top: 1.25rem;
+  width: 87.5%;
+  height: 0.16rem;
+}
+.tennisInput {
+  display: inline-block;
+  border: none;
+  border-radius: 1rem;
+  resize: none;
+  width: 75%;
+  padding: 1rem 2rem;
+  margin: 3rem 0;
+  font-family: "Calibri Light";
+  color: rgba(64, 56, 56, 0.8);
+  font-weight: 800;
+  font-size: 1.5rem;
+  background: #e6e1e1;
+  transition: background-color 0.2s linear;
+}
+.tennisInput:focus {
+  background: #c9bcb8;
+}
+.tennisInput:hover {
+  background: #c9bcb8;
+}
+::-webkit-input-placeholder {
+  color: rgba(64, 56, 56, 0.8);
+  font-size: 2rem;
+  font-weight: 400;
+  transition: color 0.2s linear;
+}
+:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.ball_item {
+  overflow: hidden;
+  cursor: pointer;
+  width: 33.3333%;
+  max-width: 187.5px;
+  margin: 3.125rem 42.875px;
+  border-radius: 0.625rem;
+  color: #403838;
+  background-color: #e6e1e1;
+  transition: background-color 0.2s linear;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+}
+.ball_item:hover {
+  background-color: #c9bcb8;
+}
+.ball_item_buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ball_item_name {
+  font-size: 1.125rem;
+  margin: 0 0.625rem 0.4rem 0.625rem;
+  text-align: left;
+}
+.ball_item_price {
+  font-size: 1.125rem;
+  font-family: Impact;
+  font-weight: unset;
+  margin: 0.625rem;
+  text-align: left;
+}
+.ball_item_basket_button {
+  width: 2rem;
+  height: 2rem;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+  border-radius: 5px;
+  margin: 10px;
+}
+.ball_item_basket_button:hover {
+  background-color: #e6e1e1;
+}
+.balls_list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.Filter_Input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.Filter_Input_Span {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  color: #403838;
+}
+.Filter_Input_Span:checked::before {
+  background-color: #c9bcb8;
+}
+.Filter_Input_Span:not(:disabled):not(:checked):hover::before {
+  border-color: #c9bcb8;
+}
+.Filter_Input_Span:not(:disabled):active::before {
+  background-color: #e6e1e1;
+}
+.Filter_Input:checked + .Filter_Input_Span::before {
+  background-color: #c9bcb8;
+}
+.Filter_Input_Span::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #e6e1e1;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+.Filter {
+  margin: 1rem;
+}
+.Filter_Container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.Filter_List {
+  display: flex;
+  color: #403838;
+}
+.Filter_Button {
+  max-width: 8.5rem;
+  color: #403838;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 125px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+}
+.Filter_Button:hover {
+  background-color: #e6e1e1;
+}
+.Filter_Reset_Button {
+  color: #403838;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+}
+.Filter_Reset_Button:hover {
+  background-color: #e6e1e1;
+}
+/*# sourceMappingURL=App.css.map */

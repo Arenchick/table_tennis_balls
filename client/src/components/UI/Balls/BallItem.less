@@ -1,0 +1,74 @@
+// main: ../../../App.less
+
+.ball_item {
+  overflow: hidden;
+
+  cursor: pointer;
+
+  width: 33.3333%;
+  max-width: 187.5px;
+
+  margin: 3.125rem 42.875px;
+
+  border-radius: 0.625rem;
+
+  color: @dark;
+
+  background-color: @lightBackground;
+  transition: background-color .2s linear;
+
+  box-shadow: 0 0 .5rem fade(black,35%);
+
+    &:hover {
+      background-color: @darkBackground;
+
+    }
+}
+
+.ball_item_buy{
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.ball_item_name{
+  font-size: 1.125rem;
+
+  margin: 0 .625rem .4rem .625rem;
+
+  text-align: left;
+}
+
+.ball_item_price{
+  font-size: 1.125rem;
+  font-family: Impact;
+  font-weight: unset;
+
+  margin: .625rem;
+
+  text-align: left;
+}
+
+.ball_item_basket_button{
+  width: 2rem;
+  height: 2rem;
+
+  padding: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: @white;
+  transition: background-color .2s linear;
+
+  border-radius: 5px;
+
+  margin: 10px;
+
+  &:hover {
+    background-color: @lightBackground;
+
+  }
+}
