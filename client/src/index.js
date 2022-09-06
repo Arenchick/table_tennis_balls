@@ -4,6 +4,7 @@ import App from './App';
 import UserStore from "./store/UserStore";
 import BallStore from "./store/BallStore";
 import Parameters from "./store/Parameters";
+import FilterStore from "./store/FilterStore";
 
 export const Context = createContext(null)
 
@@ -12,7 +13,8 @@ root.render(
     <Context.Provider value={{
         user: new UserStore(),
         ball: new BallStore(),
-        params: new Parameters()
+        params: new Parameters(),
+        filter: new FilterStore()
     }}>
         <App/>
     </Context.Provider>

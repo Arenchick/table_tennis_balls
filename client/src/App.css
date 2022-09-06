@@ -240,6 +240,9 @@ option {
 .Filter_Button:hover {
   background-color: #e6e1e1;
 }
+.Filter_Button:active {
+  background-color: #c9bcb8;
+}
 .Filter_Reset_Button {
   color: #403838;
   cursor: pointer;
@@ -250,5 +253,8 @@ option {
 }
 .Filter_Reset_Button:hover {
   background-color: #e6e1e1;
+}
+.Filter_Reset_Button:active {
+  background-color: #c9bcb8;
 }
 /*# sourceMappingURL=App.css.map */
