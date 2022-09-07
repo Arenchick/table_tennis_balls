@@ -1,32 +1,32 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Filter from "./Filter";
 import filterPic from '../../../Assets/Filter.png'
+import {Context} from "../../../index";
+import {observer} from "mobx-react-lite";
+import {fetchTypes} from "../../../http/typeApi";
+import {fetchBrands} from "../../../http/brandApi";
+import {fetchStars} from "../../../http/starApi";
+import {fetchProducerCountries} from "../../../http/producerCountryApi";
 
-const FilterList = () => {
+const FilterList = observer(() => {
+
+    const {filterStore} = useContext(Context)
+
+    useEffect(()=>{
+        fetchTypes().then(data => filterStore.setType(data))
+        fetchBrands().then(data => filterStore.setBrand(data))
+        fetchStars().then(data => filterStore.setStar(data))
+        fetchProducerCountries().then(data => filterStore.setProducerCountry(data))
+    },[])
+
 
     const [isHidden, setHidden] = useState(true)
     const changeHidden = () => {
         setHidden(!isHidden)
     }
 
-    const filters = [
-        {id: "1", name: 'Brand', properties: [
-                {id: "11", name: 'Chlen'},
-                {id: "21", name: 'Pizda'}
-            ]},
-        {id: "123", name: 'Type', properties: [
-                {id: "12", name: 'Chlen'},
-                {id: "22", name: 'Pizda'}
-            ]},
-        {id: "231", name: 'Star', properties: [
-                {id: "1223", name: 'Chlen'},
-                {id: '22314', name: 'Pizda'}
-            ]},
-        {id: "12312", name: 'ProducerCountry', properties: [
-                {id: '1224323', name: 'Chlen'},
-                {id: "223134534", name: 'Pizda'}
-            ]},
-    ]
+    const filters = []
+    filters.push(filterStore.type, filterStore.brand, filterStore.star, filterStore.producerCountry)
 
     return (
         <div>
@@ -41,13 +41,13 @@ const FilterList = () => {
                 <div className={'Filter_Container'}>
                     <div className={'Filter_List'}>
                         {filters.map(filter =>
-                            <Filter key={filter.id} filter={filter}/>
+                            <Filter key={filter.name} filter={filter}/>
                         )}
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+});
 
 export default FilterList;

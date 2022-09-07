@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App';
 import UserStore from "./store/UserStore";
 import BallStore from "./store/BallStore";
-import Parameters from "./store/Parameters";
+import FiltersStore from "./store/FiltersStore";
 
 export const Context = createContext(null)
 
@@ -12,7 +12,7 @@ root.render(
     <Context.Provider value={{
         user: new UserStore(),
         ball: new BallStore(),
-        params: new Parameters()
+        filterStore: new FiltersStore()
     }}>
         <App/>
     </Context.Provider>
