@@ -4,28 +4,32 @@ export default class FiltersStore {
     constructor() {
         this._type = {
             name: 'Type',
-            properties: []
+            properties: [],
+            selectedId: 0,
+            setSelectedId : (id) => {
+                this._type.selectedId = id
+            }
         }
         this._brand = {
             name: 'Brand',
-            properties: [
-                {id: "12452342", name: 'Hui'},
-                    {id: "2235252142", name: 'Vagina'}
-                ]
+            properties: [],
+            setSelectedId : (id) => {
+                this._brand.selectedId = id
+            }
         }
         this._star = {
             name: 'Star',
-            properties: [
-                {id: "42534612", name: 'Ebaniy'},
-                    {id: "221242353", name: 'Rot'}
-                ]
+            properties: [],
+            setSelectedId : (id) => {
+                this._star.selectedId = id
+            }
         }
         this._producerCountry = {
             name: 'ProducerCountry',
-                properties: [
-                {id: "12213", name: 'Vashego'},
-                    {id: "231232", name: 'Cazino'}
-                ]
+            properties: [],
+            setSelectedId : (id) => {
+                this._producerCountry.selectedId = id
+            }
         }
         makeAutoObservable(this)
     }
@@ -33,6 +37,15 @@ export default class FiltersStore {
     setType(typeProperties) {
         this._type.properties = typeProperties
     }
+
+    setTypeSelectedId(id) {
+        this._type.selectedId = id
+    }
+
+    get typeSelectedId(){
+        return this._type.selectedId
+    }
+
     setBrand(brandProperties) {
         this._brand.properties = brandProperties
     }

@@ -1,15 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
-const FilterItem = ({property,filterName}) => {
+const FilterItem = ({property,filterName,setSelectedId}) => {
+
+    const setSelect = (checekd) => {
+        if(checekd)
+            setSelectedId(property.id)
+        else
+            setSelectedId(0)
+    }
+
     return (
         <div>
             <label>
                 <input className={'Filter_Input'}
                        name = {filterName}
                        type="checkbox"
-                       onInput={(event) => {console.log(`${filterName}-${property} : ${event.target.checked}`)}}
+                       onInput={(event) => setSelect(event.target.checked)}
                        value={'value'}/>
-                <span className={'Filter_Input_Span'}>{property}</span>
+                <span className={'Filter_Input_Span'}>{property.value}</span>
             </label>
         </div>
     );
