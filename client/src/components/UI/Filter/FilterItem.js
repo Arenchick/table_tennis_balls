@@ -7,8 +7,6 @@ const FilterItem = ({property,filterName,setSelectedId,removeSelectedId}) => {
             setSelectedId(property.id)
         else
             removeSelectedId(property.id)
-
-
     }
 
     return (
