@@ -1,19 +1,27 @@
-
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import Container from "../components/UI/Container/Container";
-import {fetchOneBall} from "../http/ballApi";
+import {Context} from "../index";
+
 const BallPage = () => {
-    const [ball, setBall] = useState({info: []})
+
     const {id} = useParams()
-    console.log(id)
-    useEffect(() => {
-        fetchOneBall(id).then(data => setBall(data))
-    }, [])
+
+    const {ballStore} = useContext(Context)
+
+    let currentBall = {}
+
+    ballStore.balls.map(ball => {
+        if (ball.id == id){
+            currentBall = ball
+            console.log(currentBall)
+        }
+
+    })
 
     return (
         <Container >
-            <h2>{ball.name}</h2>
+            <h2>{currentBall.name}</h2>
             <div
 
                 style={{ width:240, height: 240, backgroundSize: 'cover', fontSize:64}}>

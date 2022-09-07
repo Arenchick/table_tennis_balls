@@ -9,7 +9,7 @@ const App = () => {
   return (
     <BrowserRouter>
         <div className='background'>
-            <Container>
+            <Container onClick={()=>{console.log('dasd')}}>
                 <Header>
                     Header
                 </Header>
