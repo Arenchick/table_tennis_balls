@@ -48,6 +48,8 @@ export default class FiltersStore {
                 this._producerCountry.allSelectedId.remove(id)
             }
         }
+
+        this._searchQuery = ''
         makeAutoObservable(this)
     }
 
@@ -67,6 +69,10 @@ export default class FiltersStore {
         this._producerCountry.properties = producerCountryProperties
     }
 
+    setSearchQuery(searchQuery) {
+        this._searchQuery = searchQuery
+    }
+
     get type() {
         return this._type
     }
@@ -81,5 +87,9 @@ export default class FiltersStore {
 
     get producerCountry() {
         return this._producerCountry
+    }
+
+    get searchQuery() {
+        return this._searchQuery
     }
 }

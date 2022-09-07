@@ -20,16 +20,18 @@ const BallsList = observer(() => {
 
     useEffect(()=>{
         setFilteredBalls(ballStore.balls.filter(ball =>
-            (filterStore.type.allSelectedId.length===0 || filterStore.type.allSelectedId.includes(ball.ball_info.typeId)) &&
+            ((filterStore.type.allSelectedId.length===0 || filterStore.type.allSelectedId.includes(ball.ball_info.typeId)) &&
             (filterStore.brand.allSelectedId.length===0 || filterStore.brand.allSelectedId.includes(ball.ball_info.brandId)) &&
             (filterStore.star.allSelectedId.length===0 || filterStore.star.allSelectedId.includes(ball.ball_info.starId)) &&
-            (filterStore.producerCountry.allSelectedId.length===0 || filterStore.producerCountry.allSelectedId.includes(ball.ball_info.producerCountryId))
+            (filterStore.producerCountry.allSelectedId.length===0 || filterStore.producerCountry.allSelectedId.includes(ball.ball_info.producerCountryId))) &&
+            ball.name.toLowerCase().includes(filterStore.searchQuery)
        ))
     },[
         JSON.stringify(filterStore.type.allSelectedId),
         JSON.stringify(filterStore.brand.allSelectedId),
         JSON.stringify(filterStore.star.allSelectedId),
-        JSON.stringify(filterStore.producerCountry.allSelectedId)
+        JSON.stringify(filterStore.producerCountry.allSelectedId),
+        filterStore.searchQuery
     ])
 
     return (
