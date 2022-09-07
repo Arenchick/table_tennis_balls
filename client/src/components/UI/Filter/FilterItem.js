@@ -1,12 +1,14 @@
 import React, {useContext} from 'react';
 
-const FilterItem = ({property,filterName,setSelectedId}) => {
+const FilterItem = ({property,filterName,setSelectedId,removeSelectedId}) => {
 
     const setSelect = (checekd) => {
         if(checekd)
             setSelectedId(property.id)
         else
-            setSelectedId(0)
+            removeSelectedId(property.id)
+
+
     }
 
     return (

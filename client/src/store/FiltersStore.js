@@ -5,30 +5,47 @@ export default class FiltersStore {
         this._type = {
             name: 'Type',
             properties: [],
-            selectedId: 0,
+            allSelectedId: [],
             setSelectedId : (id) => {
-                this._type.selectedId = id
+                this._type.allSelectedId.push(id)
+            },
+            removeSelectedId : (id) => {
+                this._type.allSelectedId.remove(id)
             }
         }
         this._brand = {
             name: 'Brand',
             properties: [],
+            allSelectedId: [],
             setSelectedId : (id) => {
-                this._brand.selectedId = id
+                this._brand.allSelectedId.push(id)
+                console.log(this._brand.allSelectedId)
+            },
+            removeSelectedId : (id) => {
+                this._brand.allSelectedId.remove(id)
+                console.log(this._brand.allSelectedId)
             }
         }
         this._star = {
             name: 'Star',
             properties: [],
+            allSelectedId: [],
             setSelectedId : (id) => {
-                this._star.selectedId = id
+                this._star.allSelectedId.push(id)
+            },
+            removeSelectedId : (id) => {
+                this._star.allSelectedId.remove(id)
             }
         }
         this._producerCountry = {
             name: 'ProducerCountry',
             properties: [],
+            allSelectedId: [],
             setSelectedId : (id) => {
-                this._producerCountry.selectedId = id
+                this._producerCountry.allSelectedId.push(id)
+            },
+            removeSelectedId : (id) => {
+                this._producerCountry.allSelectedId.remove(id)
             }
         }
         makeAutoObservable(this)
@@ -36,14 +53,6 @@ export default class FiltersStore {
 
     setType(typeProperties) {
         this._type.properties = typeProperties
-    }
-
-    setTypeSelectedId(id) {
-        this._type.selectedId = id
-    }
-
-    get typeSelectedId(){
-        return this._type.selectedId
     }
 
     setBrand(brandProperties) {

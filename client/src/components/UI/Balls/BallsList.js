@@ -11,16 +11,16 @@ const BallsList = observer(() => {
 
     useEffect(()=>{
        fetchBalls(
-           filterStore.type.selectedId,
-           filterStore.brand.selectedId,
-           filterStore.star.selectedId,
-           filterStore.producerCountry.selectedId
+           filterStore.type.allSelectedId,
+           filterStore.brand.allSelectedId,
+           filterStore.star.allSelectedId,
+           filterStore.producerCountry.allSelectedId
        ).then(data => ball.setBalls(data))
     },[
-        filterStore.type.selectedId,
-        filterStore.brand.selectedId,
-        filterStore.star.selectedId,
-        filterStore.producerCountry.selectedId
+        JSON.stringify(filterStore.type.allSelectedId),
+        JSON.stringify(filterStore.brand.allSelectedId),
+        JSON.stringify(filterStore.star.allSelectedId),
+        JSON.stringify(filterStore.producerCountry.allSelectedId)
     ])
 
     return (
