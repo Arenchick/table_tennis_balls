@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import BallItem from "./BallItem";
 import {Context} from "../../../index";
 import {observer} from "mobx-react-lite";
@@ -6,16 +6,25 @@ import {fetchBalls} from "../../../http/ballApi";
 
 const BallsList = observer(() => {
 
-    const {ball} = useContext(Context)
+    const {ballStore} = useContext(Context)
     const {filterStore} = useContext(Context)
 
+    const [filteredBalls,setFilteredBalls] = useState([])
+
     useEffect(()=>{
-       fetchBalls(
-           filterStore.type.allSelectedId,
-           filterStore.brand.allSelectedId,
-           filterStore.star.allSelectedId,
-           filterStore.producerCountry.allSelectedId
-       ).then(data => ball.setBalls(data))
+        fetchBalls().then(data => {
+            ballStore.setBalls(data)
+            setFilteredBalls(data)
+        })
+    },[])
+
+    useEffect(()=>{
+        setFilteredBalls(ballStore.balls.filter(ball =>
+            (filterStore.type.allSelectedId.length===0 || filterStore.type.allSelectedId.includes(ball.ball_info.typeId)) &&
+            (filterStore.brand.allSelectedId.length===0 || filterStore.brand.allSelectedId.includes(ball.ball_info.brandId)) &&
+            (filterStore.star.allSelectedId.length===0 || filterStore.star.allSelectedId.includes(ball.ball_info.starId)) &&
+            (filterStore.producerCountry.allSelectedId.length===0 || filterStore.producerCountry.allSelectedId.includes(ball.ball_info.producerCountryId))
+       ))
     },[
         JSON.stringify(filterStore.type.allSelectedId),
         JSON.stringify(filterStore.brand.allSelectedId),
@@ -25,7 +34,7 @@ const BallsList = observer(() => {
 
     return (
         <div className={'balls_list'}>
-            {ball.balls.map(item =>
+            {filteredBalls.map(item =>
                 <BallItem key={item.id} ball={item}/>
             )}
         </div>

@@ -30,50 +30,7 @@ class BallController {
     }
     async GetAll(request,response,next){
         try {
-            console.log("das")
-            const {starId,brandId,typeId,producerCountryId} = request.query
-
-            let params = {
-                starId: [],
-                brandId: [],
-                typeId: [],
-                producerCountryId: []
-            }
-
-            if (starId && starId != 0)
-                params.starId.push(starId)
-            if (brandId && brandId != 0)
-                params.brandId.push(brandId)
-            if (typeId && typeId != 0)
-                params.typeId.push(typeId)
-            if (producerCountryId && producerCountryId != 0)
-                params.producerCountryId.push(producerCountryId)
-
-            const ballInfo = await BallInfo.findAll({where: {
-                    typeId :{
-                        [Op.or]: params.typeId
-                    },
-                    brandId :{
-                        [Op.or]: params.brandId
-                    },
-                    starId :{
-                        [Op.or]: params.starId
-                    },
-                    producerCountryId :{
-                        [Op.or]: params.producerCountryId
-                    }
-                }})
-
-            // const ballInfo = await BallInfo.findAll({where: {
-            //     $and : [
-            //         {$or: params.typeId},
-            //         {$or: params.brandId},
-            //         {$or: params.starId},
-            //         {$or: params.producerCountryId}
-            //     ]
-            //     }})
-
-            // const ballInfo = await BallInfo.findAll({where: params})
+            const ballInfo = await BallInfo.findAll()
 
             const ball = await Ball.findAll(
                 {
