@@ -2,6 +2,7 @@ const {Ball, BallInfo} = require('../models/models')
 const ApiError = require('../error/apiError')
 const uuid = require('uuid')
 const path = require('path')
+const {Op} = require("sequelize");
 
 const getFileName = (file) => {
     const fileName = uuid.v4() + ".jpg"
@@ -32,18 +33,47 @@ class BallController {
             console.log("das")
             const {starId,brandId,typeId,producerCountryId} = request.query
 
-            let params = {}
+            let params = {
+                starId: [],
+                brandId: [],
+                typeId: [],
+                producerCountryId: []
+            }
 
-            if (starId)
-                params.sizeId = starId
-            if (brandId)
-                params.brandId = brandId
-            if (typeId)
-                params.typeId = typeId
-            if (producerCountryId)
-                params.producerCountryId = producerCountryId
+            if (starId && starId != 0)
+                params.starId.push(starId)
+            if (brandId && brandId != 0)
+                params.brandId.push(brandId)
+            if (typeId && typeId != 0)
+                params.typeId.push(typeId)
+            if (producerCountryId && producerCountryId != 0)
+                params.producerCountryId.push(producerCountryId)
 
-            const ballInfo = await BallInfo.findAll({where: params})
+            const ballInfo = await BallInfo.findAll({where: {
+                    typeId :{
+                        [Op.or]: params.typeId
+                    },
+                    brandId :{
+                        [Op.or]: params.brandId
+                    },
+                    starId :{
+                        [Op.or]: params.starId
+                    },
+                    producerCountryId :{
+                        [Op.or]: params.producerCountryId
+                    }
+                }})
+
+            // const ballInfo = await BallInfo.findAll({where: {
+            //     $and : [
+            //         {$or: params.typeId},
+            //         {$or: params.brandId},
+            //         {$or: params.starId},
+            //         {$or: params.producerCountryId}
+            //     ]
+            //     }})
+
+            // const ballInfo = await BallInfo.findAll({where: params})
 
             const ball = await Ball.findAll(
                 {

@@ -7,10 +7,21 @@ import {fetchBalls} from "../../../http/ballApi";
 const BallsList = observer(() => {
 
     const {ball} = useContext(Context)
+    const {filterStore} = useContext(Context)
 
     useEffect(()=>{
-       fetchBalls().then(data => ball.setBalls(data))
-    },[])
+       fetchBalls(
+           filterStore.type.selectedId,
+           filterStore.brand.selectedId,
+           filterStore.star.selectedId,
+           filterStore.producerCountry.selectedId
+       ).then(data => ball.setBalls(data))
+    },[
+        filterStore.type.selectedId,
+        filterStore.brand.selectedId,
+        filterStore.star.selectedId,
+        filterStore.producerCountry.selectedId
+    ])
 
     return (
         <div className={'balls_list'}>
