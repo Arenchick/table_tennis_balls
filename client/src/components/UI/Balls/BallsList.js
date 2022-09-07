@@ -5,7 +5,7 @@ import {Context} from "../../../index";
 const BallsList = () => {
 
     const {ball} = useContext(Context)
-
+    console.log(ball)
     return (
         <div className={'balls_list'}>
             {ball.balls.map(item =>
