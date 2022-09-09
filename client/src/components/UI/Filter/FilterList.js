@@ -37,7 +37,7 @@ const FilterList = observer(() => {
                      height={20}/>
                 <p>Фильтры</p>
             </div>
-            <div hidden={isHidden}>
+            <div>
                 <div className={'Filter_Container'}>
                     <div className={'Filter_List'}>
                         {filters.map(filter =>

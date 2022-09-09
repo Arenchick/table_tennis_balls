@@ -213,11 +213,20 @@ option {
 .Filter_Name {
   font-size: 1.2rem;
   color: #403838;
+  cursor: pointer;
   font-weight: bold;
   margin-bottom: 1rem;
   padding: 5px;
-  background-color: #e6e1e1;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+  border: 1px solid #e6e1e1;
   border-radius: 10px;
+}
+.Filter_Name:hover {
+  background-color: #e6e1e1;
+}
+.Filter_Name:active {
+  background-color: #c9bcb8;
 }
 .Filter_List {
   color: #403838;
@@ -226,20 +235,11 @@ option {
 .Filter_Button {
   max-width: 8.5rem;
   color: #403838;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px;
   border-radius: 10px;
-  background-color: #fffafa;
-  transition: background-color 0.2s linear;
-}
-.Filter_Button:hover {
-  background-color: #e6e1e1;
-}
-.Filter_Button:active {
-  background-color: #c9bcb8;
 }
 .Filter_Reset_Button {
   color: #403838;
