@@ -8,11 +8,17 @@ const Filter = ({filter}) => {
                 {filter.name}
             </div>
             {filter.properties.map(property =>
+                !filter.inputType ?
                 <FilterItem key={property.id}
                             property={property}
                             filterName={filter.name}
                             setSelectedId={filter.setSelectedId}
-                            removeSelectedId={filter.removeSelectedId}/>
+                            removeSelectedId={filter.removeSelectedId}/> :
+                <FilterItem key={property.id}
+                            property={property}
+                            filterName={filter.name}
+                            inputType={filter.inputType}
+                            setSelectedId={filter.setSelectedId}/>
             )}
         </div>
     );

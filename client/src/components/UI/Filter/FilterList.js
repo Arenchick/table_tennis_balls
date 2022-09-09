@@ -26,7 +26,7 @@ const FilterList = observer(() => {
     }
 
     const filters = []
-    filters.push(filterStore.type, filterStore.brand, filterStore.star, filterStore.producerCountry)
+    filters.push(filterStore.type, filterStore.brand, filterStore.star, filterStore.producerCountry, filterStore.priceSort)
 
     return (
         <div>

@@ -1,6 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
-const FilterItem = ({property,filterName,setSelectedId,removeSelectedId}) => {
+const FilterItem = ({property,
+                     filterName,
+                     setSelectedId = () => {console.log('None function')},
+                     removeSelectedId = () => {console.log('None function')},
+                     inputType = 'checkbox'}
+) => {
 
     const setSelect = (checekd) => {
         if(checekd)
@@ -14,7 +19,7 @@ const FilterItem = ({property,filterName,setSelectedId,removeSelectedId}) => {
             <label>
                 <input className={'Filter_Input'}
                        name = {filterName}
-                       type="checkbox"
+                       type={inputType}
                        onInput={(event) => setSelect(event.target.checked)}
                        value={'value'}/>
                 <span className={'Filter_Input_Span'}>{property.value}</span>

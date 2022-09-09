@@ -22,12 +22,6 @@ body {
   background-position: center;
   background-repeat: repeat-y;
 }
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
 *,
 *:before,
 *:after {
@@ -58,6 +52,7 @@ option {
   width: 100%;
   height: 100%;
   max-width: 1000px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 0 1.5rem;
   background-color: #fffafa;
@@ -155,6 +150,11 @@ option {
 .ball_item_basket_button:hover {
   background-color: #e6e1e1;
 }
+.Balls_Filters_container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 3rem;
+}
 .balls_list {
   width: 100%;
   display: grid;
@@ -162,7 +162,7 @@ option {
   grid-template-rows: auto;
   gap: 3rem;
   justify-items: center;
-  align-items: center;
+  align-items: start;
 }
 @media (max-width: 650px) {
   .balls_list {
@@ -178,6 +178,7 @@ option {
   display: inline-flex;
   align-items: center;
   user-select: none;
+  font-size: 1.2rem;
   color: #403838;
 }
 .Filter_Input_Span:checked::before {
@@ -210,7 +211,8 @@ option {
   margin: 1rem 0;
 }
 .Filter_Name {
-  text-align: center;
+  font-size: 1.2rem;
+  color: #403838;
   font-weight: bold;
   margin-bottom: 1rem;
   padding: 5px;
@@ -219,6 +221,7 @@ option {
 }
 .Filter_List {
   color: #403838;
+  font-size: 1.2rem;
 }
 .Filter_Button {
   max-width: 8.5rem;

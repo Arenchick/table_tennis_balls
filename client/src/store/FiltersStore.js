@@ -19,11 +19,9 @@ export default class FiltersStore {
             allSelectedId: [],
             setSelectedId : (id) => {
                 this._brand.allSelectedId.push(id)
-                console.log(this._brand.allSelectedId)
             },
             removeSelectedId : (id) => {
                 this._brand.allSelectedId.remove(id)
-                console.log(this._brand.allSelectedId)
             }
         }
         this._star = {
@@ -46,6 +44,26 @@ export default class FiltersStore {
             },
             removeSelectedId : (id) => {
                 this._producerCountry.allSelectedId.remove(id)
+            }
+        }
+
+        this._priceSort = {
+            name: 'Сортировка',
+            inputType: 'radio',
+            selectedId: 0,
+            properties: [
+                {
+                    id: 1,
+                    value: 'По возрастанию'
+                },
+                {
+                    id: 2,
+                    value: 'По убыванию'
+                }
+            ],
+            setSelectedId : (id) => {
+                this._priceSort.selectedId = id
+                console.log(this._priceSort.selectedId)
             }
         }
 
@@ -87,6 +105,10 @@ export default class FiltersStore {
 
     get producerCountry() {
         return this._producerCountry
+    }
+
+    get priceSort() {
+        return this._priceSort
     }
 
     get searchQuery() {
