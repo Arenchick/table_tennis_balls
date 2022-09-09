@@ -25,8 +25,11 @@ const Balls = () => {
                 onChange = {inputOnChange}
                 placeholder={'Поиск'}
             />
-            <FilterList/>
-            <BallsList/>
+            <div style={{display: "flex", justifyContent: "space-between",marginTop: "1rem"}}>
+                <FilterList/>
+                <BallsList/>
+            </div>
+
         </div>
     );
 };

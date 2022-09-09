@@ -38,7 +38,7 @@ export default class FiltersStore {
             }
         }
         this._producerCountry = {
-            name: 'ProducerCountry',
+            name: 'Country',
             properties: [],
             allSelectedId: [],
             setSelectedId : (id) => {

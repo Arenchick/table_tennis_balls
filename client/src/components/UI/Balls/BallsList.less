@@ -2,9 +2,16 @@
 
 .balls_list{
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+
+  display: grid;
+
+  grid-template-columns: repeat(3,1fr);
+
+  justify-items: center;
+
+  @media(max-width: 650px){
+    grid-template-columns: 1fr;
+  }
 
   align-items: center;
 }

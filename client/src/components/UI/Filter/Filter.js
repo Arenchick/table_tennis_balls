@@ -4,7 +4,7 @@ import FilterItem from "./FilterItem";
 const Filter = ({filter}) => {
     return (
         <div className={'Filter'}>
-            <div>
+            <div className={'Filter_Name'}>
                 {filter.name}
             </div>
             {filter.properties.map(property =>
