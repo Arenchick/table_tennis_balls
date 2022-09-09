@@ -8,7 +8,7 @@ import Header from "./components/UI/Header/Header";
 const App = () => {
   return (
     <BrowserRouter>
-        <div className='background'>
+        <div>
             <Container>
                 <Header>
                     Header

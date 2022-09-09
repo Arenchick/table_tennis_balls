@@ -17,6 +17,10 @@ body {
   font-size: 1.5rem;
   font-family: 'Open Sans', sans-serif;
   height: 100%;
+  background: #e6e1e1 url(Assets/Background.jpg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: repeat-y;
 }
 #root {
   margin: 0;
@@ -49,14 +53,6 @@ option {
   padding: 0;
   border: none;
   outline: none;
-}
-.background {
-  width: 100%;
-  height: 100%;
-  background: #403838 url(Assets/Background.jpg);
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .container {
   width: 100%;
@@ -119,7 +115,6 @@ option {
   cursor: pointer;
   max-width: 187.5px;
   border-radius: 0.625rem;
-  margin-bottom: 2rem;
   color: #403838;
   background-color: #e6e1e1;
   transition: background-color 0.2s linear;
@@ -164,6 +159,8 @@ option {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 3rem;
   justify-items: center;
   align-items: center;
 }
