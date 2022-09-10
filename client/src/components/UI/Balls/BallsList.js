@@ -35,11 +35,11 @@ const BallsList = observer(() => {
 
     const sortedBalls = useMemo(() => {
         switch (filterStore.priceSort.selectedId){
-            case 1:
+            case 2:
                 return [...filtersBalls].sort(function (a, b) {
                     return b.price - a.price
                 })
-            case 2:
+            case 1:
                 return [...filtersBalls].sort(function (a, b) {
                     return a.price - b.price
                 })

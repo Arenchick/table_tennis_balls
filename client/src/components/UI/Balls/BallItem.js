@@ -32,7 +32,7 @@ const BallItem = ({ball}) => {
             <div className={'ball_item_buy'}>
 
                 <div className={'ball_item_price'}>
-                    {ball.price}
+                    {ball.price + ' р.'}
                 </div>
 
                 <div className={'ball_item_basket_button'} onClick={addingInBasket}>
