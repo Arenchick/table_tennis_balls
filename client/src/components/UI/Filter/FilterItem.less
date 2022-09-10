@@ -11,6 +11,8 @@
   align-items: center;
   user-select: none;
 
+  font-size: @fontSize * .8;
+
   color: @dark;
 
   &:checked::before{
@@ -25,7 +27,7 @@
     background-color: @lightBackground;
   }
   .Filter_Input:checked+&::before{
-    background-color: @darkBackground;
+    background-color: @lightBackground;
   }
 
   &::before{

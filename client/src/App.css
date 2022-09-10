@@ -1,21 +1,14 @@
-html {
-  font-size: 1rem;
-  height: 100%;
-}
 @media (max-width: 1200px) {
-  html {
-    font-size: 1rem;
-  }
+  @font Size = 0.67 * 1.5rem;
 }
 @media (max-width: 568px) {
-  html {
-    font-size: 0.5rem;
-  }
+  @font Size = 0.33* 1.5rem;
 }
 @media (max-width: 430px) {
-  html {
-    font-size: 0.3rem;
-  }
+  @font Size = 0.2 1.5rem;
+}
+html {
+  height: 100%;
 }
 body {
   margin: 0;
@@ -24,12 +17,10 @@ body {
   font-size: 1.5rem;
   font-family: 'Open Sans', sans-serif;
   height: 100%;
-}
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+  background: #e6e1e1 url(Assets/Background.jpg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: repeat-y;
 }
 *,
 *:before,
@@ -57,18 +48,11 @@ option {
   border: none;
   outline: none;
 }
-.background {
-  width: 100%;
-  height: 100%;
-  background: #403838 url(Assets/Background.jpg);
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 .container {
   width: 100%;
   height: 100%;
   max-width: 1000px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 0 1.5rem;
   background-color: #fffafa;
@@ -124,9 +108,7 @@ option {
 .ball_item {
   overflow: hidden;
   cursor: pointer;
-  width: 33.3333%;
   max-width: 187.5px;
-  margin: 3.125rem 42.875px;
   border-radius: 0.625rem;
   color: #403838;
   background-color: #e6e1e1;
@@ -168,12 +150,24 @@ option {
 .ball_item_basket_button:hover {
   background-color: #e6e1e1;
 }
+.Balls_Filters_container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 3rem;
+}
 .balls_list {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 3rem;
+  justify-items: center;
+  align-items: start;
+}
+@media (max-width: 650px) {
+  .balls_list {
+    grid-template-columns: 1fr;
+  }
 }
 .Filter_Input {
   position: absolute;
@@ -184,6 +178,7 @@ option {
   display: inline-flex;
   align-items: center;
   user-select: none;
+  font-size: 1.2rem;
   color: #403838;
 }
 .Filter_Input_Span:checked::before {
@@ -196,7 +191,7 @@ option {
   background-color: #e6e1e1;
 }
 .Filter_Input:checked + .Filter_Input_Span::before {
-  background-color: #c9bcb8;
+  background-color: #e6e1e1;
 }
 .Filter_Input_Span::before {
   content: '';
@@ -213,32 +208,38 @@ option {
   background-size: 50% 50%;
 }
 .Filter {
-  margin: 1rem;
+  margin: 1rem 0;
 }
-.Filter_Container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+.Filter_Name {
+  font-size: 1.2rem;
+  color: #403838;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 5px;
+  background-color: #fffafa;
+  transition: background-color 0.2s linear;
+  border: 1px solid #e6e1e1;
+  border-radius: 10px;
+}
+.Filter_Name:hover {
+  background-color: #e6e1e1;
+}
+.Filter_Name:active {
+  background-color: #c9bcb8;
 }
 .Filter_List {
-  display: flex;
   color: #403838;
+  font-size: 1.2rem;
 }
 .Filter_Button {
   max-width: 8.5rem;
   color: #403838;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 125px;
   padding: 5px;
   border-radius: 10px;
-  background-color: #fffafa;
-  transition: background-color 0.2s linear;
-}
-.Filter_Button:hover {
-  background-color: #e6e1e1;
 }
 .Filter_Reset_Button {
   color: #403838;
@@ -250,5 +251,8 @@ option {
 }
 .Filter_Reset_Button:hover {
   background-color: #e6e1e1;
+}
+.Filter_Reset_Button:active {
+  background-color: #c9bcb8;
 }
 /*# sourceMappingURL=App.css.map */

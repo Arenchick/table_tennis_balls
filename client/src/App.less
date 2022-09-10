@@ -3,40 +3,36 @@
 @import "vars";
 
 html {
-  font-size: 1rem;
-
   height: 100%;
 
   //media
 
-  @media(max-width: 1200px) {
-    font-size: 1rem;
-  }
-
-  @media(max-width: 568px) {
-    font-size: 0.5rem;
-  }
-
-  @media(max-width: 430px) {
-    font-size: 0.3rem;
-  }
+  //@media(max-width: 1200px) {
+  //  font-size: 0.67 * @fontSize
+  //}
+  //
+  //@media(max-width: 568px) {
+  //  font-size: 0.33* @fontSize;
+  //}
+  //
+  //@media(max-width: 430px) {
+  //  font-size: 0.2 @fontSize;
+  //}
 }
 body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-  font-size: 1.5rem;
+  font-size: @fontSize;
   font-family:'Open Sans', sans-serif;
 
   height: 100%;
 
-}
+  background: @lightBackground url(Assets/Background.jpg);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: repeat-y;
 
-#root{
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
 }
 
 *,
@@ -58,16 +54,6 @@ input, textarea, select, option {
   padding: 0;
   border: none;
   outline: none;
-}
-
-.background{
-  width: 100%;
-  height: 100%;
-  background: @dark url(Assets/Background.jpg);
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-
 }
 
 // ===== blocks =====

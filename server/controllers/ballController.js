@@ -2,6 +2,7 @@ const {Ball, BallInfo} = require('../models/models')
 const ApiError = require('../error/apiError')
 const uuid = require('uuid')
 const path = require('path')
+const {Op} = require("sequelize");
 
 const getFileName = (file) => {
     const fileName = uuid.v4() + ".jpg"
@@ -29,21 +30,7 @@ class BallController {
     }
     async GetAll(request,response,next){
         try {
-            console.log("das")
-            const {starId,brandId,typeId,producerCountryId} = request.query
-
-            let params = {}
-
-            if (starId)
-                params.sizeId = starId
-            if (brandId)
-                params.brandId = brandId
-            if (typeId)
-                params.typeId = typeId
-            if (producerCountryId)
-                params.producerCountryId = producerCountryId
-
-            const ballInfo = await BallInfo.findAll({where: params})
+            const ballInfo = await BallInfo.findAll()
 
             const ball = await Ball.findAll(
                 {

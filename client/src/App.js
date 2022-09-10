@@ -8,14 +8,12 @@ import Header from "./components/UI/Header/Header";
 const App = () => {
   return (
     <BrowserRouter>
-        <div className='background'>
-            <Container onClick={()=>{console.log('dasd')}}>
+            <Container>
                 <Header>
                     Header
                 </Header>
                 <AppRouter />
             </Container>
-        </div>
     </BrowserRouter>
   );
 }

@@ -23,7 +23,7 @@ const BallItem = ({ball}) => {
             <img
                 width={187.5}
                 height={187.5}
-                src={ball.image}/>
+                src={process.env.REACT_APP_API_URL + ball.image}/>
 
             <div className={'ball_item_name'}>
                 {ball.name}

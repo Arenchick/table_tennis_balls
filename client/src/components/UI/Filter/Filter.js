@@ -1,16 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FilterItem from "./FilterItem";
 
 const Filter = ({filter}) => {
+
+    const [isHidden, setHidden] = useState(true)
+    const changeHidden = () => {
+        setHidden(!isHidden)
+    }
+
     return (
         <div className={'Filter'}>
-            <div>
+            <div className={'Filter_Name'}
+                 onClick={changeHidden}>
                 {filter.name}
             </div>
-            <FilterItem filterName={filter.name} property={'Всё'} isChecked={true}/>
-            {filter.properties.map(property =>
-                <FilterItem key={filter.id} property={property.name} filterName={filter.name}/>
-            )}
+            <div hidden={isHidden}>
+                {filter.properties.map(property =>
+                    !filter.inputType ?
+                        <FilterItem key={property.id}
+                                    property={property}
+                                    filterName={filter.name}
+                                    setSelectedId={filter.setSelectedId}
+                                    removeSelectedId={filter.removeSelectedId}/> :
+                        <FilterItem key={property.id}
+                                    property={property}
+                                    filterName={filter.name}
+                                    inputType={filter.inputType}
+                                    setSelectedId={filter.setSelectedId}/>
+                )}
+            </div>
         </div>
     );
 };

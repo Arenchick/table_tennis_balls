@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import TennisInput from "../components/UI/Input/TennisInput";
 import BallsList from "../components/UI/Balls/BallsList";
 import FilterList from "../components/UI/Filter/FilterList";
+import {Context} from "../index";
 
 const Balls = () => {
 
     const [searchQuery, setSearchQuery] = useState('')
 
+    const {filterStore} = useContext(Context)
+
     const inputOnChange = (event) => {
         setSearchQuery(event.target.value)
     }
+
+    useEffect(()=>{
+        filterStore.setSearchQuery(searchQuery.toLowerCase())
+    },[searchQuery])
 
     return (
         <div>
@@ -18,8 +25,11 @@ const Balls = () => {
                 onChange = {inputOnChange}
                 placeholder={'Поиск'}
             />
-            <FilterList/>
-            <BallsList/>
+            <div className={'Balls_Filters_container'}>
+                <FilterList/>
+                <BallsList/>
+            </div>
+
         </div>
     );
 };
