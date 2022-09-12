@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import basketPicture from '../../../Assets/Basket.png'
 import {useHistory} from "react-router-dom";
 import {BALL_PAGE_ROUTE} from "../../../utils/Consts";
+import {Context} from "../../../index";
+import {createBasketBall} from "../../../http/BasketApi";
 
 const BallItem = ({ball}) => {
 
     const history = useHistory()
+
+    const {user} = useContext(Context)
 
     const routingToBallPage = () => {
         history.push(`${BALL_PAGE_ROUTE}/${ball.id}`)
@@ -13,7 +17,8 @@ const BallItem = ({ball}) => {
 
     const addingInBasket = (event) => {
         event.stopPropagation()
-        // add this ball in busket
+
+        createBasketBall(user.user.id, ball.id)
     }
 
     return (

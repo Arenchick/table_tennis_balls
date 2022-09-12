@@ -10,7 +10,6 @@ import basketPicture from "../../Assets/Basket.png";
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const history = useHistory()
-    console.log(user._isAuth)
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)

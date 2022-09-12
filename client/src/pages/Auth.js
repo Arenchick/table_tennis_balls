@@ -24,7 +24,7 @@ const Auth = observer(() => {
             } else {
                 data = await registration(email, name, password);
             }
-            user.setUser(user)
+            user.setUser(data)
             user.setIsAuth(true)
             history.push(BASKET_ROUTE)
         } catch (e) {

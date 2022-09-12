@@ -1,4 +1,4 @@
-const {BasketBall} = require('../models/models')
+const {BasketBall, Ball} = require('../models/models')
 const ApiError = require('../error/apiError')
 
 class BasketBallController {
@@ -20,7 +20,12 @@ class BasketBallController {
     }
     async GetAll(request,response,next){
         try {
-            const baskets = await BasketBall.findAll()
+            const {basketId} = request.query
+
+            const baskets = await BasketBall.findAll({
+                where: {basketId},
+                include: {model: Ball, as: 'ball'}
+            })
             return response.json(baskets)
         }
         catch (error){
@@ -35,6 +40,30 @@ class BasketBallController {
             const basketBall = await BasketBall.findOne({where: {id}})
 
             return response.json(basketBall)
+        }
+        catch (error) {
+            return next(ApiError.BadRequest(error.message))
+        }
+    }
+
+    async GetAllCount(request,response,next){
+        try {
+            const basketBallCount = await BasketBall.count()
+
+            return response.json(basketBallCount)
+        }
+        catch (error) {
+            return next(ApiError.BadRequest(error.message))
+        }
+    }
+
+    async GetOneBallCount(request,response,next){
+        try {
+            const {ballId} = request.params
+
+            const basketBallCount = await BasketBall.count({where: {ballId}})
+
+            return response.json(basketBallCount)
         }
         catch (error) {
             return next(ApiError.BadRequest(error.message))
