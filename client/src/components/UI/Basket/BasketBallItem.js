@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {deleteOneBasketBall, getOneBaksetBallCount} from "../../../http/BasketApi";
+import {changeBasketBallCount, deleteOneBasketBall} from "../../../http/BasketApi";
 
-const BasketBallItem = ({basketBall}) => {
+const BasketBallItem = ({basketBall, deleteBasketBall}) => {
 
-    const [ballCount, setBallCount] = useState(0)
+    const [ballCount, setBallCount] = useState(basketBall.count)
 
-    useEffect(()=>{
-        getOneBaksetBallCount(basketBall.ball.id).then(data => {
+    const [inputQuery, setInputQuery] = useState(basketBall.count)
+
+    const changeCount = (newCount) => {
+        changeBasketBallCount(basketBall.ball.id,inputQuery).then(data => {
             setBallCount(data)
-        })
-    },[])
+        }
+    )}
 
     return (
         <div>
             {basketBall.ball.name + '||' + ballCount}
             <div>
-                <button onClick={()=>{deleteOneBasketBall(basketBall.id)}}/>
+                <button onClick={() => {deleteBasketBall(basketBall.id)}}>Del</button>
+                <input defaultValue={inputQuery} onChange={(event) => {setInputQuery(event.target.value)}}/>
+                <button onClick={() => {changeCount(2)}}>Change</button>
             </div>
         </div>
     );

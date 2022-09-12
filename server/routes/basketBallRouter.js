@@ -4,10 +4,11 @@ const router = new Router()
 const basketBallController = require('../controllers/basketBallController')
 
 router.post('/',basketBallController.Create)
+router.put('/:ballId',basketBallController.UpdateCount)
 router.get('/',basketBallController.GetAll)
-router.get('/count',basketBallController.GetAllCount)
-router.get('/count/:ballId',basketBallController.GetOneBallCount)
+router.get('/allCount',basketBallController.GetAllCount)
+router.get('/count/',basketBallController.GetOneBallCount)
 router.get('/:id',basketBallController.GetOne)
-router.delete('/:ballId',basketBallController.DeleteOne)
+router.delete('/',basketBallController.DeleteOne)
 
 module.exports = router

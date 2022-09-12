@@ -18,6 +18,31 @@ class BasketBallController {
             return next(ApiError.BadRequest(error.message))
         }
     }
+
+    async UpdateCount(request,response,next){
+        try {
+            const {ballId} = request.params
+            const {count} = request.body
+
+            if (!ballId)
+                return next(ApiError.BadRequest("Такого элемента не существует"))
+
+            const isChangedRaws = await BasketBall.update({count: count},{where: {ballId}})
+
+            if (isChangedRaws > 0)
+            {
+                const basketBall = await BasketBall.findOne({where: {ballId}})
+                return response.json(basketBall.count)
+            }
+            else
+                return next(ApiError.BadRequest("Не нашлось, что надо менять"))
+        }
+        catch (error) {
+            return next(ApiError.BadRequest(error.message))
+        }
+    }
+
+
     async GetAll(request,response,next){
         try {
             const {basketId} = request.query
@@ -59,11 +84,14 @@ class BasketBallController {
 
     async GetOneBallCount(request,response,next){
         try {
-            const {ballId} = request.params
+            const {ballId} = request.query
 
-            const basketBallCount = await BasketBall.count({where: {ballId}})
+            const basketBall = await BasketBall.findOne({where: {ballId}})
 
-            return response.json(basketBallCount)
+            if (basketBall)
+                return response.json(basketBall.count)
+            else
+                return response.json(0)
         }
         catch (error) {
             return next(ApiError.BadRequest(error.message))
@@ -72,7 +100,7 @@ class BasketBallController {
 
     async DeleteOne(request,response,next){
         try {
-            const {id} = request.params
+            const {id} = request.query
 
             await BasketBall.destroy({where: {id}})
 

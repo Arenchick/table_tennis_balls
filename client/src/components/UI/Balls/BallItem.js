@@ -3,7 +3,7 @@ import basketPicture from '../../../Assets/Basket.png'
 import {useHistory} from "react-router-dom";
 import {BALL_PAGE_ROUTE} from "../../../utils/Consts";
 import {Context} from "../../../index";
-import {createBasketBall} from "../../../http/BasketApi";
+import {changeBasketBallCount, createBasketBall, getOneBasketBallCount} from "../../../http/BasketApi";
 
 const BallItem = ({ball}) => {
 
@@ -18,7 +18,16 @@ const BallItem = ({ball}) => {
     const addingInBasket = (event) => {
         event.stopPropagation()
 
-        createBasketBall(user.user.id, ball.id)
+        getOneBasketBallCount(ball.id).then(data => {
+
+            if(data >= 1){
+                changeBasketBallCount(ball.id, data+1)
+            }
+            else {
+                createBasketBall(user.user.id, ball.id)
+
+            }
+        })
     }
 
     return (

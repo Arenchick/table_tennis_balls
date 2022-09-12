@@ -10,8 +10,8 @@ export const getAllBaksetBallsCount = async () => {
     return data
 }
 
-export const getOneBaksetBallCount = async (ballId) => {
-    const {data} = await $host.get(`api/basketBall/count/${ballId}`)
+export const getOneBasketBallCount = async (ballId) => {
+    const {data} = await $host.get('api/basketBall/count', {params: {ballId}})
     return data
 }
 
@@ -20,7 +20,12 @@ export const createBasketBall = async (basketId, ballId) => {
     return data
 }
 
-export const deleteOneBasketBall = async (basketBallId) => {
-    const {data} = await $host.delete(`api/basketBall/${basketBallId}`)
+export const changeBasketBallCount = async (ballId, count) => {
+    const {data} = await $host.put(`api/basketBall/${ballId}`,{count})
+    return data
+}
+
+export const deleteOneBasketBall = async (id) => {
+    const {data} = await $host.delete('api/basketBall', {params: {id}})
     return data
 }
