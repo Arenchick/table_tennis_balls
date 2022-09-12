@@ -1,3 +1,4 @@
+
 import React, {useContext, useEffect, useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
@@ -10,14 +11,14 @@ import {check} from "./http/userApi";
 
 const App = () => {
     const {user}= useContext(Context)
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        check().then(data => {
-            user.setUser(true)
-            user.setIsAuth(true)
-        }).finally(() => setLoading(false))
-    }, [])
+    // const [loading, setLoading] = useState(true)
+    //
+    // useEffect(() => {
+    //     check().then(data => {
+    //         user.setUser(data)
+    //         user.setIsAuth(true)
+    //     }).finally(() => setLoading(false))
+    // }, [])
   return (
     <BrowserRouter>
             <Container>

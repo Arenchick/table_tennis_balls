@@ -18,8 +18,8 @@ const BallItem = ({ball}) => {
 
     return (
         <div className={'ball_item'}
-             onClick={routingToBallPage}>
-
+             onClick={routingToBallPage}
+        >
             <img
                 width={187.5}
                 height={187.5}

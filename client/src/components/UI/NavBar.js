@@ -1,30 +1,28 @@
 import React, {useContext} from 'react';
-import {NavLink} from "react-router-dom";
 
 import {observer} from "mobx-react-lite";
 import {useHistory} from 'react-router-dom'
 import {Context} from "../../index";
 import {ADMIN_ROUTE, BALLS_ROUTE, BASKET_ROUTE, LOGIN_ROUTE} from "../../utils/Consts";
-import Container from "./Container/Container";
 import basketPicture from "../../Assets/Basket.png";
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const history = useHistory()
-    console.log(user._isAuth)
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
+        // console.log(user._isAuth)
     }
     const routingToBasket = () => {
         history.push(`${BASKET_ROUTE}`)
     }
-
+// console.log(user._isAuth)
     return (
             <div>
                 <button onClick={() => history.push(BALLS_ROUTE)}>
                     Магазин
                 </button>
-                {user._isAuth ?
+                {user.isAuth ?
                     <div>
                         <button
                             onClick={() => history.push(ADMIN_ROUTE)}
