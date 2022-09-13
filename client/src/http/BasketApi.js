@@ -20,8 +20,8 @@ export const createBasketBall = async (basketId, ballId) => {
     return data
 }
 
-export const changeBasketBallCount = async (ballId, count) => {
-    const {data} = await $host.put(`api/basketBall/${ballId}`,{count})
+export const changeBasketBallCount = async (id, count) => {
+    const {data} = await $host.put(`api/basketBall/${id}`,{count})
     return data
 }
 

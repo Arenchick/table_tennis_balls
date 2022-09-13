@@ -143,12 +143,16 @@ option {
   justify-content: center;
   align-items: center;
   background-color: #fffafa;
+  border: 1px solid transparent;
   transition: background-color 0.2s linear;
   border-radius: 5px;
   margin: 10px;
 }
 .ball_item_basket_button:hover {
   background-color: #e6e1e1;
+}
+.ball_item_basket_button:active {
+  border-color: #403838;
 }
 .Balls_Filters_container {
   display: grid;

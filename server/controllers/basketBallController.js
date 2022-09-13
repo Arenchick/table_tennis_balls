@@ -21,17 +21,17 @@ class BasketBallController {
 
     async UpdateCount(request,response,next){
         try {
-            const {ballId} = request.params
+            const {id} = request.params
             const {count} = request.body
 
-            if (!ballId)
+            if (!id)
                 return next(ApiError.BadRequest("Такого элемента не существует"))
 
-            const isChangedRaws = await BasketBall.update({count: count},{where: {ballId}})
+            const isChangedRaws = await BasketBall.update({count: count},{where: {id}})
 
             if (isChangedRaws > 0)
             {
-                const basketBall = await BasketBall.findOne({where: {ballId}})
+                const basketBall = await BasketBall.findOne({where: {id}})
                 return response.json(basketBall.count)
             }
             else

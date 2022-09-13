@@ -19,12 +19,16 @@ const BallItem = ({ball}) => {
         event.stopPropagation()
 
         getOneBasketBallCount(ball.id).then(data => {
-
             if(data >= 1){
-                changeBasketBallCount(ball.id, data+1)
+                // ===============ball====count=====================
+                changeBasketBallCount(ball.id, data+1).then(data => {
+                    alert('Увеличено кол-во')
+                })
             }
             else {
-                createBasketBall(user.user.id, ball.id)
+                createBasketBall(user.user.id, ball.id).then(data => {
+                    alert('Добавлено')
+                })
 
             }
         })

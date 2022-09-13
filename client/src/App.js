@@ -11,7 +11,6 @@ import {fetchBalls} from "./http/ballApi";
 
 const App = () => {
     const {user}= useContext(Context)
-    const {ballStore}= useContext(Context)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -19,10 +18,6 @@ const App = () => {
             user.setUser(data)
             user.setIsAuth(true)
         }).finally(() => setLoading(false))
-
-        fetchBalls().then(data => {
-            ballStore.setBalls(data)
-        })
     }, [])
   return (
     <BrowserRouter>

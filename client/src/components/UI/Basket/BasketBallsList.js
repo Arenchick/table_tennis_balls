@@ -1,14 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import BasketBallItem from "./BasketBallItem";
 
-const BasketBallsList = ({basketBalls, deleteBasketBall}) => {
-
-    // ===C===O===U===N===T===
+const BasketBallsList = ({basketBalls, deleteBasketBall, changeCount, select, unselect}) => {
 
     return (
         <div>
             {basketBalls.map(basketBall =>
-                <BasketBallItem key={basketBall.id} basketBall={basketBall} deleteBasketBall={deleteBasketBall}/>
+                <BasketBallItem key={basketBall.id} basketBall={basketBall} deleteBasketBall={deleteBasketBall} changeCount={changeCount} select={select} unselect={unselect}/>
             )}
         </div>
     );
