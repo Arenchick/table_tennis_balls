@@ -32,19 +32,22 @@ const Basket = observer(() => {
             price = price + basketBall.ball.price*basketBall.count
         })
 
+        // select
+
         setAllPrice(price)
     },[basketBalls])
 
-    const changeBallCount = (id, newCount) => {
-        changeBasketBallCount(id,newCount).then(data => {
+    const changeBallCount = (ballId, newCount) => {
+        changeBasketBallCount(ballId,newCount).then(data => {
 
-            const index = basketBalls.map(basketBall => basketBall.id).indexOf(id)
+            const index = basketBalls.map(basketBall => basketBall.ball.id).indexOf(ballId)
             let count = data
 
             if (count > basketBalls[index].ball.count)
                 count = basketBalls[index].ball.count
             let newBalls = basketBalls
             newBalls[index].count = count
+
             setBasketBalls([...newBalls])
         })
     }

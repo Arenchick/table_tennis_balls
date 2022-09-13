@@ -1,17 +1,10 @@
 import React, {useState} from 'react';
-import {changeBasketBallCount} from "../../../http/BasketApi";
+import BallItem from "../Balls/BallItem";
+import DeleteButton from "../Buttons/DeleteButton";
 
 const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unselect}) => {
 
-    // const [ballCount, setBallCount] = useState(basketBall.count)
-
     const [inputQuery, setInputQuery] = useState(basketBall.count)
-
-    // const changeCount = () => {
-    //     changeBasketBallCount(basketBall.ball.id,inputQuery).then(data => {
-    //         setBallCount(data)
-    //     }
-    // )}
 
     const selectBall = (checked) => {
         if (checked){
@@ -22,14 +15,22 @@ const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unse
         }
     }
 
+    const deleteBall = () => {
+        deleteBasketBall(basketBall.id)
+    }
+
     return (
-        <div>
-            {basketBall.ball.name + '||' + basketBall.count}
+        <div className={'Basket_Ball_Item'}>
+            <label>
+                <input className={'Filter_Input'} type={'checkbox'} name={basketBall.id} value={'da'} defaultChecked={true} onChange={(event)=>{selectBall(event.target.checked)}}/>
+                <span className={'Filter_Input_Span'}></span>
+            </label>
+            <BallItem ball={basketBall.ball} showBaksetButton={false}/>
             <div>
-                <input type={'checkbox'} defaultChecked={true} onChange={(event)=>{selectBall(event.target.checked)}}/>
-                <button onClick={() => {deleteBasketBall(basketBall.id)}}>Del</button>
+                <DeleteButton click={deleteBall} />
+                {/*<button onClick={() => {}}>Del</button>*/}
                 <input defaultValue={inputQuery} onChange={(event) => {setInputQuery(event.target.value)}}/>
-                <button onClick={() => {changeCount(basketBall.id,inputQuery)}}>Change</button>
+                <button onClick={() => {changeCount(basketBall.ball.id,inputQuery)}}>Change</button>
             </div>
         </div>
     );

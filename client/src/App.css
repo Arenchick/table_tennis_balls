@@ -135,24 +135,9 @@ option {
   margin: 0.625rem;
   text-align: left;
 }
-.ball_item_basket_button {
-  width: 2rem;
-  height: 2rem;
-  padding: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fffafa;
-  border: 1px solid transparent;
-  transition: background-color 0.2s linear;
-  border-radius: 5px;
-  margin: 10px;
-}
-.ball_item_basket_button:hover {
-  background-color: #e6e1e1;
-}
-.ball_item_basket_button:active {
-  border-color: #403838;
+.ball_item_image {
+  width: 187.5px;
+  height: 187.5px;
 }
 .Balls_Filters_container {
   display: grid;
@@ -191,8 +176,8 @@ option {
 .Filter_Input_Span:not(:disabled):not(:checked):hover::before {
   border-color: #c9bcb8;
 }
-.Filter_Input_Span:not(:disabled):active::before {
-  background-color: #e6e1e1;
+.Filter_Input_Span:not(:disabled):not(:checked):active::before {
+  background-color: #c9bcb8;
 }
 .Filter_Input:checked + .Filter_Input_Span::before {
   background-color: #e6e1e1;
@@ -258,5 +243,48 @@ option {
 }
 .Filter_Reset_Button:active {
   background-color: #c9bcb8;
+}
+.Basket_Ball_Item {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+.ball_item_basket_button {
+  width: 2rem;
+  height: 2rem;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffafa;
+  border: 1px solid transparent;
+  transition: background-color 0.2s linear;
+  border-radius: 5px;
+  margin: 10px;
+}
+.ball_item_basket_button:hover {
+  background-color: #e6e1e1;
+}
+.ball_item_basket_button:active {
+  border-color: #403838;
+}
+.Delete_Button {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EA9F9F;
+  transition: background-color 0.2s linear;
+  border-radius: 5px;
+  margin: 10px;
+}
+.Delete_Button:hover {
+  background-color: #FF7A7A;
+}
+.Delete_Button:active {
+  background-color: #EE5A5A;
 }
 /*# sourceMappingURL=App.css.map */

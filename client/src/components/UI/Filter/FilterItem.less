@@ -23,9 +23,10 @@
     border-color: @darkBackground;
   }
 
-  &:not(:disabled):active::before{
-    background-color: @lightBackground;
+  &:not(:disabled):not(:checked):active::before{
+    background-color: @darkBackground;
   }
+
   .Filter_Input:checked+&::before{
     background-color: @lightBackground;
   }
