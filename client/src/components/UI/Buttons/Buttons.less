@@ -39,33 +39,36 @@
 }
 
 .Buy_Button{
-  width: 9rem;
-  height: 3rem;
+  width: fit-content;
+  height: fit-content;
+
+  padding: 5px 25px;
+
   font-size: 1.5rem;
 
-  background-color: #86E65A;
+  background-color: fade(#86E65A,35%);
+  transition: background-color .2s linear;
+
   border: none;
 
   &:not(:disabled):hover {
-    background-color: #7ED955;
+    background-color: fade(#86E65A,60%);
   }
 
   &:not(:disabled):active {
-    background-color: #70BF4B;
+    background-color: fade(#86E65A,100%);
   }
 }
 
 .Delete_Button{
-  background-color: #EA9F9F;
   transition: background-color .2s linear;
 
   &:hover {
-    background-color: #FF7A7A;
+    background-color: fade(#FF7A7A,60%);
   }
 
   &:active {
-    background-color: #EE5A5A;
-  }
+    background-color: fade(#FF7A7A,100%);}
 }
 
 .Increment_Decrement_Button{

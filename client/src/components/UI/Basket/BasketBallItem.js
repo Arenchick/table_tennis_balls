@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import DeleteButton from "../Buttons/DeleteButton";
-import BallItemPrice from "../Balls/BallItemPrice";
 import BallItemComponent from "../Balls/BallItemComponent";
 import BasketBallCounter from "./BasketBallCounter";
-import IncrementDecrementButton from "../Buttons/IncrementDecrementButton";
 import BuyButton from "../Buttons/BuyButton";
 import CheckboxRadioButton from "../Input/CheckboxRadioButton";
+import {ORDER_PAGE_ROUTE} from "../../../utils/Consts";
+import {useHistory} from "react-router-dom";
 
 const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unselect}) => {
+
+    const history = useHistory()
 
     const selectBall = (checked) => {
         if (checked){
@@ -22,6 +24,7 @@ const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unse
         event.stopPropagation()
 
         // === BUY ===
+        history.push(`${ORDER_PAGE_ROUTE}`)
     }
 
     const deleteBall = (event) => {
@@ -52,7 +55,7 @@ const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unse
                             <DeleteButton click={deleteBall}/>
                         </div>
                         <BasketBallCounter basketBall={basketBall} changeCount={changeBallCount}/>
-                        <BuyButton click={buyBall}/>
+                        <BuyButton click={buyBall} text={'Купить'}/>
                     </div>
 
                 </BallItemComponent>

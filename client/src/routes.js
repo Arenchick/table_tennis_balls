@@ -1,9 +1,18 @@
-import {ADMIN_ROUTE, BALL_PAGE_ROUTE, BALLS_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "./utils/Consts";
+import {
+    ADMIN_ROUTE,
+    BALL_PAGE_ROUTE,
+    BALLS_ROUTE,
+    BASKET_ROUTE,
+    LOGIN_ROUTE,
+    ORDER_PAGE_ROUTE,
+    REGISTRATION_ROUTE
+} from "./utils/Consts";
 import Admin from "./pages/Admin";
 import Basket from "./pages/Basket";
 import Balls from "./pages/Balls";
 import Auth from "./pages/Auth";
 import BallPage from "./pages/BallPage";
+import OrderPage from "./pages/OrderPage";
 
 export const authRoutes = [
     {
@@ -13,6 +22,10 @@ export const authRoutes = [
     {
         path: BASKET_ROUTE,
         component: Basket
+    },
+    {
+        path: ORDER_PAGE_ROUTE,
+        component: OrderPage
     }
 ]
 

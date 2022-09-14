@@ -3,8 +3,14 @@ import {changeBasketBallCount, deleteOneBasketBall, getAllBaksetBalls} from "../
 import {Context} from "../index";
 import BasketBallsList from "../components/UI/Basket/BasketBallsList";
 import {observer} from "mobx-react-lite";
+import BuyButton from "../components/UI/Buttons/BuyButton";
+import {useHistory} from "react-router-dom";
+import {ORDER_PAGE_ROUTE} from "../utils/Consts";
+import * as events from "events";
 
 const Basket = observer(() => {
+
+    const history = useHistory()
 
     const {user} = useContext(Context)
 
@@ -81,12 +87,22 @@ const Basket = observer(() => {
         setAllPrice(newPrice)
     }
 
+    const orderClick = (event) => {
+        history.push(`${ORDER_PAGE_ROUTE}`)
+    }
+
     return (
-        <div>
+        <div className={'Basket_Page'}>
             <BasketBallsList basketBalls={allBasketBalls} deleteBasketBall={deleteBasketBall} changeCount={changeBallCount} select={select} unselect={unselect}/>
-            <div>
-                {selectedBasketBalls.map(basketBall => basketBall.ball.name)}
-                {allPrice}
+            <div className={'Basket_Order_List'}>
+                <h2 className={'Basket_Order_List_Title'}>Заказ</h2>
+                {selectedBasketBalls.map(basketBall =>
+                    <p key={basketBall.id} className={'Basket_Order_List_Ball_Name'}>• {basketBall.ball.name}, {basketBall.count}шт</p>
+                )}
+                <h3 className={'Basket_Order_List_Price'}>{allPrice} р.</h3>
+                <div className={'Basket_Order_List_Buy_Button_Container'}>
+                    <BuyButton text={'Оформить'} click={orderClick}/>
+                </div>
             </div>
         </div>
     );
