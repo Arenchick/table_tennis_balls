@@ -27,7 +27,8 @@ const BallItemBasketButton = ({ballId}) => {
     }
 
     return (
-        <div className={'ball_item_basket_button'} onClick={addingInBasket}>
+        <div className={'button ball_item_basket_button'} onClick={addingInBasket}>
+            <div style={{marginRight: "5px"}}>В корзину</div>
             <img width={17.5}
                  height={17.5}
                  src={basketPicture}

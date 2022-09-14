@@ -1,33 +1,6 @@
 // main: ../../../App.less
 
-.ball_item_basket_button{
-  width: 2rem;
-  height: 2rem;
-
-  padding: 2px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: @white;
-  border: 1px solid transparent;
-  transition: background-color .2s linear;
-
-  border-radius: 5px;
-
-  margin: 10px;
-
-  &:hover {
-    background-color: @lightBackground;
-  }
-
-  &:active {
-    border-color: @dark;
-  }
-}
-
-.Delete_Button{
+.button {
   cursor: pointer;
 
   width: 2rem;
@@ -39,12 +12,52 @@
   justify-content: center;
   align-items: center;
 
-  background-color: #EA9F9F;
+  border-radius: 10px;
+
+  //margin: 10px;
+}
+
+.ball_item_basket_button{
+  background-color: @white;
+  border: 1px solid transparent;
   transition: background-color .2s linear;
 
-  border-radius: 5px;
+  width: auto;
 
-  margin: 10px;
+  font-size: 1rem;
+
+  padding: 4px;
+  margin: 0 10px 10px 10px;
+
+  &:hover {
+    background-color: @lightBackground;
+  }
+
+  &:active {
+    border-color: @dark;
+  }
+}
+
+.Buy_Button{
+  width: 9rem;
+  height: 3rem;
+  font-size: 1.5rem;
+
+  background-color: #86E65A;
+  border: none;
+
+  &:not(:disabled):hover {
+    background-color: #7ED955;
+  }
+
+  &:not(:disabled):active {
+    background-color: #70BF4B;
+  }
+}
+
+.Delete_Button{
+  background-color: #EA9F9F;
+  transition: background-color .2s linear;
 
   &:hover {
     background-color: #FF7A7A;
@@ -52,5 +65,36 @@
 
   &:active {
     background-color: #EE5A5A;
+  }
+}
+
+.Increment_Decrement_Button{
+  width: 2rem;
+  height: 2rem;
+
+  cursor: pointer;
+
+  padding: 2px;
+
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: @white;
+  border: 1px solid @darkBackground;
+  border-radius: 50%;
+
+  &:disabled{
+    box-shadow: 0 0 0;
+  }
+
+  &:not(:disabled):hover {
+    background-color: @lightBackground;
+  }
+
+  &:not(:disabled):active {
+    background-color: @darkBackground;
   }
 }

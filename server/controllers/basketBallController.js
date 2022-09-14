@@ -1,4 +1,4 @@
-const {BasketBall, Ball} = require('../models/models')
+const {BasketBall, Ball, BallInfo, Type, Brand, Star, ProducerCountry} = require('../models/models')
 const ApiError = require('../error/apiError')
 
 class BasketBallController {
@@ -49,7 +49,13 @@ class BasketBallController {
 
             const baskets = await BasketBall.findAll({
                 where: {basketId},
-                include: {model: Ball, as: 'ball'}
+                include: {model: Ball, as: 'ball',
+                    include: {model: BallInfo, as: 'ball_info', include: [
+                            {model: Type, as: 'type'},
+                            {model: Brand, as: 'brand'},
+                            {model: Star, as: 'star'},
+                            {model: ProducerCountry, as: 'producer_country'}
+                        ]}}
             })
             return response.json(baskets)
         }

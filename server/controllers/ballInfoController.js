@@ -1,4 +1,4 @@
-const {BallInfo} = require('../models/models')
+const {BallInfo, Type, Brand, Star, ProducerCountry} = require('../models/models')
 const ApiError = require('../error/apiError')
 
 class BallInfoController {
@@ -18,7 +18,14 @@ class BallInfoController {
 
     async GetAll(request,response,next){
         try {
-            const ballInfo = await BallInfo.findAll()
+            const ballInfo = await BallInfo.findAll({
+                include: [
+                    {model: Type, as: 'type'},
+                    {model: Brand, as: 'brand'},
+                    {model: Star, as: 'star'},
+                    {model: ProducerCountry, as: 'producer_country'}
+                ]
+            })
             return response.json(ballInfo)
         }
         catch (error){

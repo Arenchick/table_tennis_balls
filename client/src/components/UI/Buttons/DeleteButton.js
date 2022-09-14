@@ -2,8 +2,8 @@ import React from 'react';
 
 const DeleteButton = ({click}) => {
     return (
-        <div onClick={click}
-             className={'Delete_Button'}>
+        <div onClick={(event) => click(event)}
+             className={'button Delete_Button'}>
         X
         </div>
     );
