@@ -23,12 +23,7 @@ const App = () => {
     <BrowserRouter>
             <Container>
                 <Header/>
-                {
-                    isLoaded ?
-                        <AppRouter/>
-                        :
-                        <h1>Загрузка</h1>
-                }
+                <AppRouter/>
             </Container>
     </BrowserRouter>
   );
