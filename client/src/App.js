@@ -6,25 +6,29 @@ import Container from "./components/UI/Container/Container";
 import Header from "./components/UI/Header/Header";
 import {Context} from "./index";
 import {check} from "./http/userApi";
-import {fetchBalls} from "./http/ballApi";
-
 
 const App = () => {
+
     const {user}= useContext(Context)
-    const [loading, setLoading] = useState(true)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         check().then(data => {
             user.setUser(data)
-            user.setIsAuth(true)
-        }).finally(() => setLoading(false))
+            setIsLoaded(true)
+        })
     }, [])
+
   return (
     <BrowserRouter>
             <Container>
-                <Header>
-                </Header>
-                <AppRouter />
+                <Header/>
+                {
+                    isLoaded ?
+                        <AppRouter/>
+                        :
+                        <h1>Загрузка</h1>
+                }
             </Container>
     </BrowserRouter>
   );

@@ -10,10 +10,10 @@ const BallItemBasketButton = ({ballId}) => {
     const addingInBasket = (event) => {
         event.stopPropagation()
 
-        getOneBasketBallCount(ballId).then(data => {
+        getOneBasketBallCount(user.user.id,ballId).then(data => {
             if(data >= 1){
                 // ===============ball=====count======================================================================================================
-                changeBasketBallCount(ballId, data+1).then(data => {
+                changeBasketBallCount(user.user.id ,ballId, data+1).then(data => {
                     alert('Увеличено кол-во')
                 })
             }

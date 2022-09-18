@@ -17,7 +17,8 @@ const Auth = observer(() => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
 
-    const click = async () => {
+    const click = async (event) => {
+        event.preventDefault()
         try {
             let data;
             if (isLogin) {
@@ -28,9 +29,8 @@ const Auth = observer(() => {
             console.log(data)
             user.setUser(data)
             user.setIsAuth(true)
-            window.location.assign('http://localhost:3000/basket');
             console.log(user._isAuth)
-            // history.push(BALLS_ROUTE)
+            history.push(BALLS_ROUTE)
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -76,7 +76,7 @@ const Auth = observer(() => {
                         }
                         <button
 
-                            onClick={click}
+                            onClick={(event) => click(event)}
                         >
                             {isLogin ? 'Войти' : 'Регистрация'}
                         </button>
