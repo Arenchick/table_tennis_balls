@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckboxRadioButton from "../Input/CheckboxRadioButton";
 
 const FilterItem = ({property,
                      filterName,
@@ -16,14 +17,7 @@ const FilterItem = ({property,
 
     return (
         <div>
-            <label>
-                <input className={'Filter_Input'}
-                       name = {filterName}
-                       type={inputType}
-                       onInput={(event) => setSelect(event.target.checked)}
-                       value={'value'}/>
-                <span className={'Filter_Input_Span'}>{property.value}</span>
-            </label>
+            <CheckboxRadioButton name={filterName} type={inputType} onInput={setSelect} text={property.value}/>
         </div>
     );
 };

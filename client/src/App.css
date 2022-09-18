@@ -75,7 +75,7 @@ option {
   width: 87.5%;
   height: 0.16rem;
 }
-.tennisInput {
+.searchInput {
   display: inline-block;
   border: none;
   border-radius: 1rem;
@@ -90,10 +90,10 @@ option {
   background: #e6e1e1;
   transition: background-color 0.2s linear;
 }
-.tennisInput:focus {
+.searchInput:focus {
   background: #c9bcb8;
 }
-.tennisInput:hover {
+.searchInput:hover {
   background: #c9bcb8;
 }
 ::-webkit-input-placeholder {
@@ -118,37 +118,62 @@ option {
 .ball_item:hover {
   background-color: #c9bcb8;
 }
+.basket_ball_item {
+  display: flex;
+  cursor: default;
+  overflow: visible;
+  max-width: none;
+  width: 100%;
+  height: 187.5px;
+  background-color: transparent;
+}
+.basket_ball_item:hover {
+  background-color: transparent;
+}
+.basket_ball_item_info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
 .ball_item_buy {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+}
+.basket_button_ball_item_buy {
+  justify-content: flex-end;
+}
+.ball_item_buy_basket {
+  flex-direction: column;
 }
 .ball_item_name {
   font-size: 1.125rem;
   margin: 0 0.625rem 0.4rem 0.625rem;
   text-align: left;
 }
+.ball_item_info {
+  margin-left: 10px;
+}
+.ball_item_info_value {
+  font-size: 1rem;
+}
 .ball_item_price {
-  font-size: 1.125rem;
+  font-size: 1.3rem;
   font-family: Impact;
   font-weight: unset;
-  margin: 0.625rem;
+  margin: 1rem 0.625rem;
   text-align: left;
 }
-.ball_item_basket_button {
-  width: 2rem;
-  height: 2rem;
-  padding: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fffafa;
-  transition: background-color 0.2s linear;
-  border-radius: 5px;
-  margin: 10px;
+.ball_item_image {
+  cursor: pointer;
+  width: 187.5px;
+  height: 187.5px;
+  border-radius: 0.625rem;
 }
-.ball_item_basket_button:hover {
-  background-color: #e6e1e1;
+.Basket_Ball_Item_Delete_Button_Container {
+  display: flex;
+  justify-content: flex-end;
 }
 .Balls_Filters_container {
   display: grid;
@@ -187,8 +212,8 @@ option {
 .Filter_Input_Span:not(:disabled):not(:checked):hover::before {
   border-color: #c9bcb8;
 }
-.Filter_Input_Span:not(:disabled):active::before {
-  background-color: #e6e1e1;
+.Filter_Input_Span:not(:disabled):not(:checked):active::before {
+  background-color: #c9bcb8;
 }
 .Filter_Input:checked + .Filter_Input_Span::before {
   background-color: #e6e1e1;
@@ -196,13 +221,13 @@ option {
 .Filter_Input_Span::before {
   content: '';
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 1.5rem;
+  height: 1.5rem;
   flex-shrink: 0;
   flex-grow: 0;
   border: 1px solid #e6e1e1;
   border-radius: 50%;
-  margin-right: 0.5em;
+  margin: 0 0.5em;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
@@ -253,6 +278,143 @@ option {
   background-color: #e6e1e1;
 }
 .Filter_Reset_Button:active {
+  background-color: #c9bcb8;
+}
+.Basket_Ball_Item_Container {
+  display: flex;
+  align-items: center;
+}
+.Basket_Ball_Item {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 10px;
+}
+.Basket_Ball_Item_Counter {
+  width: 100%;
+  cursor: default;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fffafa;
+  border-radius: 5px;
+}
+.Basket_Ball_Item_Footer {
+  display: flex;
+  align-items: flex-end;
+}
+.Basket_Ball_Item_Counter_Count {
+  margin: 0 1rem;
+}
+.Basket_Page {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.Basket_Order_List {
+  width: 100%;
+  padding: 50px;
+  color: #403838;
+  text-align: center;
+}
+.Basket_Order_List_Title:after {
+  content: "";
+  display: inherit;
+  background-color: #c9bcb8;
+  width: 100%;
+  height: 0.1rem;
+  margin: 10px 0;
+}
+.Basket_Order_List_Ball_Name {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+.Basket_Order_List_Price {
+  text-align: end;
+}
+.Basket_Order_List_Price:before {
+  content: "";
+  display: inherit;
+  background-color: #c9bcb8;
+  width: 100%;
+  height: 0.1rem;
+  margin: 10px 0;
+}
+.Basket_Order_List_Buy_Button_Container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+.button {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.ball_item_basket_button {
+  background-color: #fffafa;
+  border: 1px solid transparent;
+  transition: background-color 0.2s linear;
+  width: auto;
+  font-size: 1rem;
+  padding: 4px;
+  margin: 0 10px 10px 10px;
+}
+.ball_item_basket_button:hover {
+  background-color: #e6e1e1;
+}
+.ball_item_basket_button:active {
+  border-color: #403838;
+}
+.Buy_Button {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 25px;
+  font-size: 1.5rem;
+  background-color: rgba(134, 230, 90, 0.35);
+  transition: background-color 0.2s linear;
+  border: none;
+}
+.Buy_Button:not(:disabled):hover {
+  background-color: rgba(134, 230, 90, 0.6);
+}
+.Buy_Button:not(:disabled):active {
+  background-color: #86e65a;
+}
+.Delete_Button {
+  transition: background-color 0.2s linear;
+}
+.Delete_Button:hover {
+  background-color: rgba(255, 122, 122, 0.6);
+}
+.Delete_Button:active {
+  background-color: #ff7a7a;
+}
+.Increment_Decrement_Button {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffafa;
+  border: 1px solid #c9bcb8;
+  border-radius: 50%;
+}
+.Increment_Decrement_Button:disabled {
+  box-shadow: 0 0 0;
+}
+.Increment_Decrement_Button:not(:disabled):hover {
+  background-color: #e6e1e1;
+}
+.Increment_Decrement_Button:not(:disabled):active {
   background-color: #c9bcb8;
 }
 /*# sourceMappingURL=App.css.map */
