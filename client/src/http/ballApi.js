@@ -1,6 +1,10 @@
-import {$host} from "./index";
+import {$authHost, $host} from "./index";
 
 export const fetchBalls = async () => {
     const {data} = await $host.get('/api/ball')
+    return data
+}
+export const createBall = async (ball) => {
+    const {data} = await $authHost.post('api/ball', {ball})
     return data
 }

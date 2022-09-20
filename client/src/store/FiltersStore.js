@@ -114,4 +114,10 @@ export default class FiltersStore {
     get searchQuery() {
         return this._searchQuery
     }
+    setTypes(types) {
+        this._type = types
+    }
+    setBrands(brands) {
+        this._brand = brands
+    }
 }

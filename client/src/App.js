@@ -6,6 +6,7 @@ import Container from "./components/UI/Container/Container";
 import Header from "./components/UI/Header/Header";
 import {Context} from "./index";
 import {check} from "./http/userApi";
+import Footer from "./components/UI/Footer/footer";
 
 const App = () => {
 
@@ -23,13 +24,9 @@ const App = () => {
     <BrowserRouter>
             <Container>
                 <Header/>
-                {
-                    isLoaded ?
                         <AppRouter/>
-                        :
-                        <h1>Загрузка</h1>
-                }
             </Container>
+        <Footer/>
     </BrowserRouter>
   );
 }

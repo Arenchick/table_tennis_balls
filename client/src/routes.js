@@ -1,8 +1,9 @@
 import {
+    ABOUT_ROUTE,
     ADMIN_ROUTE,
     BALL_PAGE_ROUTE,
     BALLS_ROUTE,
-    BASKET_ROUTE,
+    BASKET_ROUTE, CONTACTS_ROUTE,
     LOGIN_ROUTE,
     ORDER_PAGE_ROUTE,
     REGISTRATION_ROUTE
@@ -13,6 +14,8 @@ import Balls from "./pages/Balls";
 import Auth from "./pages/Auth";
 import BallPage from "./pages/BallPage";
 import OrderPage from "./pages/OrderPage";
+import Contacts from "./pages/Contacts";
+import About from "./pages/About";
 
 export const authRoutes = [
     {
@@ -45,5 +48,14 @@ export const publicRoutes = [
     {
         path: `${BALL_PAGE_ROUTE}/:id`,
         component: BallPage
-    }
+    },
+    {
+        path: ABOUT_ROUTE,
+        component: About
+    },
+    {
+        path: CONTACTS_ROUTE ,
+        component: Contacts
+    },
+
 ]
