@@ -23,7 +23,7 @@ const BasketBallCounter = ({basketBall, changeCount}) => {
     const decrement = (event) => {
         event.stopPropagation()
 
-        if (basketBall.count === 2){
+        if (basketBall.count <= 2){
             setDecrementButtonDisabled(true)
         }
 
