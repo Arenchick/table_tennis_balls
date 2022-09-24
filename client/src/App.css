@@ -21,6 +21,7 @@ body {
   background-size: 100% 100%;
   background-position: center;
   background-repeat: repeat-y;
+  color: #403838;
 }
 *,
 *:before,
@@ -143,6 +144,11 @@ option {
 }
 .searchInput:hover {
   background: #c9bcb8;
+}
+.Auth_Input {
+  width: 100%;
+  padding: 0.7rem 1.5rem;
+  margin-bottom: 1.5rem;
 }
 ::-webkit-input-placeholder {
   color: rgba(64, 56, 56, 0.8);
@@ -403,6 +409,7 @@ option {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  color: #403838;
 }
 .ball_item_basket_button {
   background-color: #fffafa;
@@ -542,12 +549,41 @@ option {
   background-color: #403838;
   margin-bottom: 1.25rem;
   width: 87.5%;
-  height: 0.16rem;
+  height: 0.08rem;
 }
 .Footer_content {
   color: #403838;
 }
 .Footer_rights {
   font-size: 1rem;
+}
+.Auth {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Auth_Title {
+  margin-bottom: 1rem;
+}
+.Auth_Link {
+  font-size: 1.2rem;
+  color: #403838;
+  transition: color 0.1s linear;
+}
+.Auth_Link:hover {
+  color: #c9bcb8;
+}
+.Auth_Link:active {
+  color: #e6e1e1;
+}
+.Auth_Link_Text {
+  font-size: 1rem;
+}
+.Auth_Footer {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 /*# sourceMappingURL=App.css.map */

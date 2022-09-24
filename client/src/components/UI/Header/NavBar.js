@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 
 import {observer} from "mobx-react-lite";
 import {useHistory} from 'react-router-dom'
-import {Context} from "../../index";
-import {ADMIN_ROUTE, BALLS_ROUTE, BASKET_ROUTE, LOGIN_ROUTE} from "../../utils/Consts";
-import basketPicture from "../../Assets/Basket.png";
+import {Context} from "../../../index";
+import {ADMIN_ROUTE, BALLS_ROUTE, BASKET_ROUTE, LOGIN_ROUTE} from "../../../utils/Consts";
+import basketPicture from "../../../Assets/Basket.png";
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const history = useHistory()

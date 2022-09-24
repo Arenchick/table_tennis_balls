@@ -3,7 +3,7 @@ import {changeBasketBallCount, deleteOneBasketBall, getAllBasketBalls} from "../
 import {Context} from "../index";
 import BasketBallsList from "../components/UI/Basket/BasketBallsList";
 import {observer} from "mobx-react-lite";
-import BuyButton from "../components/UI/Buttons/BuyButton";
+import GreenButton from "../components/UI/Buttons/GreenButton";
 import {useHistory} from "react-router-dom";
 import {ORDER_PAGE_ROUTE} from "../utils/Consts";
 
@@ -100,7 +100,7 @@ const Basket = observer(() => {
                 )}
                 <h3 className={'Basket_Order_List_Price'}>{allPrice} р.</h3>
                 <div className={'Basket_Order_List_Buy_Button_Container'}>
-                    <BuyButton text={'Оформить'} click={orderClick}/>
+                    <GreenButton text={'Оформить'} click={orderClick}/>
                 </div>
             </div>
         </div>

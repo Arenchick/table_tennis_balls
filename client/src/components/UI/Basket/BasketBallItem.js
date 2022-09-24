@@ -2,7 +2,7 @@ import React from 'react';
 import DeleteButton from "../Buttons/DeleteButton";
 import BallItemComponent from "../Balls/BallItemComponent";
 import BasketBallCounter from "./BasketBallCounter";
-import BuyButton from "../Buttons/BuyButton";
+import GreenButton from "../Buttons/GreenButton";
 import CheckboxRadioButton from "../Input/CheckboxRadioButton";
 import {ORDER_PAGE_ROUTE} from "../../../utils/Consts";
 import {useHistory} from "react-router-dom";
@@ -56,7 +56,7 @@ const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unse
                             <DeleteButton click={deleteBall}/>
                         </div>
                         <BasketBallCounter basketBall={basketBall} changeCount={changeBallCount}/>
-                        <BuyButton click={buyBall} text={'Купить'}/>
+                        <GreenButton click={buyBall} text={'Купить'}/>
                     </div>
 
                 </BallItemComponent>

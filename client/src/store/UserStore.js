@@ -4,12 +4,6 @@ export default class UserStore {
     constructor() {
         this._isAuth = true
         this._user = {}
-        //     {
-        //     id: '11',
-        //     name: 'Aren',
-        //     email: 'Aren@Aren.aren',
-        //     role: 'ADMIN'
-        // }
         makeAutoObservable(this)
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BuyButton = ({click,text}) => {
+const GreenButton = ({click,text}) => {
     return (
         <div onClick={(event) => click(event)}
              className={'button Buy_Button'}>
@@ -10,4 +10,4 @@ const BuyButton = ({click,text}) => {
 };
 
 
-export default BuyButton;
+export default GreenButton;
