@@ -94,10 +94,10 @@ const Basket = observer(() => {
         <div className={'Basket_Page'}>
             <BasketBallsList basketBalls={allBasketBalls} deleteBasketBall={deleteBasketBall} changeCount={changeBallCount} select={select} unselect={unselect}/>
             <div className={'Basket_Order_List'}>
-                <h2 className={'Basket_Order_List_Title'}>Заказ</h2>
-                {allBasketBalls.map(basketBall =>
-                    <BasketOrderItem key={basketBall.id} basketBall={basketBall}/>
-                )}
+                {/*<h2 className={'Basket_Order_List_Title'}>Заказ</h2>*/}
+                {/*{allBasketBalls.map(basketBall =>*/}
+                {/*    <BasketOrderItem key={basketBall.id} basketBall={basketBall}/>*/}
+                {/*)}*/}
                 <h3 className={'Basket_Order_List_Price'}>{allPrice} р.</h3>
                 <div className={'Basket_Order_List_Buy_Button_Container'}>
                     <BuyButton text={'Оформить'} click={orderClick}/>
