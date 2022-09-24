@@ -1,12 +1,10 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {BASKET_ROUTE, ORDER_PAGE_ROUTE, ADMIN_ROUTE, ABOUT_ROUTE, CONTACTS_ROUTE} from "../../../utils/Consts";
+import {ADMIN_ROUTE, ABOUT_ROUTE, CONTACTS_ROUTE} from "../../../utils/Consts";
 
 const HeaderNavBar = () => {
     return (
         <div className={'header_navbar'}>
-            <NavLink className={'header_navbar_link'}
-                     to={BASKET_ROUTE}>Корзина</NavLink>
             <NavLink className={'header_navbar_link'}
                      to={ABOUT_ROUTE}>О нас</NavLink>
             <NavLink className={'header_navbar_link'}

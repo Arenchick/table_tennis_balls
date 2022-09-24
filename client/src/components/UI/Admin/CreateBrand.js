@@ -11,12 +11,10 @@ const CreateBrand = () => {
     }
     return (
         <div>
-                    <TennisInput value={value}
-                           onChange={e => setValue(e.target.value)}
-                           placeholder={"Введите название типа"}/>
-
-                {/*<button onClick={() => console.log("rerer")}>Закрыть</button>*/}
-                <button onClick={addBrand}>Добавить</button>
+            <TennisInput value={value}
+                         onChange={e => setValue(e.target.value)}
+                         placeholder={"Введите название типа"}/>
+            <button onClick={addBrand}>Добавить</button>
         </div>
     );
 };

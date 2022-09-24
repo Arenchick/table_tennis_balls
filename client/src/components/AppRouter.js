@@ -8,7 +8,7 @@ const AppRouter = () => {
     const {user} = useContext(Context)
 
     return (
-        <div>
+        <div className={'App_Router'}>
         <Switch>
             {user._isAuth && authRoutes.map(route =>
 

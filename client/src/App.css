@@ -48,6 +48,9 @@ option {
   border: none;
   outline: none;
 }
+.App_Router {
+  flex: 1 1 auto;
+}
 .container {
   width: 100%;
   height: 100%;
@@ -56,6 +59,8 @@ option {
   margin: 0 auto;
   padding: 0 1.5rem;
   background-color: #fffafa;
+  display: flex;
+  flex-direction: column;
 }
 .header {
   background-color: #fffafa;
@@ -481,6 +486,7 @@ option {
   padding: 40px;
   background-color: #e6e1e1;
   border-radius: 20px;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
   color: #403838;
 }
 .Ball_Page_Image {
@@ -516,6 +522,32 @@ option {
   font-weight: 500;
 }
 .Ball_Page_Parameter_Value {
+  font-size: 1rem;
+}
+.Footer {
+  background-color: #fffafa;
+  display: flex;
+  padding: 1rem 1rem 0 1rem;
+  margin: 3rem 0;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-height: 5rem;
+  text-align: center;
+}
+.Footer:before {
+  content: "";
+  display: inline-block;
+  background-color: #403838;
+  margin-bottom: 1.25rem;
+  width: 87.5%;
+  height: 0.16rem;
+}
+.Footer_content {
+  color: #403838;
+}
+.Footer_rights {
   font-size: 1rem;
 }
 /*# sourceMappingURL=App.css.map */

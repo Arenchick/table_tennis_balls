@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import CreateBrand from "../components/UI/models/CreateBrand";
-import CreateType from "../components/UI/models/CreateType";
-import CreateStar from "../components/UI/models/CreateStar";
-import CreateBall from "../components/UI/models/CreateBall";
+import CreateBrand from "../components/UI/Admin/CreateBrand";
+import CreateType from "../components/UI/Admin/CreateType";
+import CreateStar from "../components/UI/Admin/CreateStar";
+import CreateBall from "../components/UI/Admin/CreateBall";
 
 const Admin = () => {
     const [brandVisible, setBrandVisible] = useState(false)
