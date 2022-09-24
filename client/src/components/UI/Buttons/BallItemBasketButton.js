@@ -3,7 +3,7 @@ import basketPicture from "../../../Assets/Basket.png";
 import {changeBasketBallCount, createBasketBall, getOneBasketBallCount} from "../../../http/BasketApi";
 import {Context} from "../../../index";
 
-const BallItemBasketButton = ({ballId}) => {
+const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) => {
 
     const {user} = useContext(Context)
 
@@ -27,7 +27,7 @@ const BallItemBasketButton = ({ballId}) => {
     }
 
     return (
-        <div className={'button ball_item_basket_button'} onClick={addingInBasket}>
+        <div className={`button ${ClassName}`} onClick={addingInBasket}>
             <div style={{marginRight: "5px"}}>В корзину</div>
             <img width={17.5}
                  height={17.5}

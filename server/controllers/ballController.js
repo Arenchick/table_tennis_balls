@@ -1,4 +1,4 @@
-const {Ball, BallInfo} = require('../models/models')
+const {Ball, BallInfo, Type, Brand, Star, ProducerCountry} = require('../models/models')
 const ApiError = require('../error/apiError')
 const uuid = require('uuid')
 const path = require('path')
@@ -35,7 +35,12 @@ class BallController {
             const ball = await Ball.findAll(
                 {
                     where: {ballInfoId: ballInfo.map(info => info.id)},
-                    include: {model: BallInfo, as: 'ball_info'}
+                    include: {model: BallInfo, as: 'ball_info', include: [
+                            {model: Type, as: 'type'},
+                            {model: Brand, as: 'brand'},
+                            {model: Star, as: 'star'},
+                            {model: ProducerCountry, as: 'producer_country'}
+                        ]}
                 })
 
             return response.json(ball)
@@ -52,7 +57,12 @@ class BallController {
             const ball = await Ball.findOne(
                 {
                     where: {id},
-                    include: {model: BallInfo, as: 'ball_info'}
+                    include: {model: BallInfo, as: 'ball_info', include: [
+                            {model: Type, as: 'type'},
+                            {model: Brand, as: 'brand'},
+                            {model: Star, as: 'star'},
+                            {model: ProducerCountry, as: 'producer_country'}
+                        ]}
                 })
 
             return response.json(ball)

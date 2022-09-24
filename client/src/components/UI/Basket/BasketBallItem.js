@@ -48,6 +48,7 @@ const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unse
                                    ballItemInfoClassName={'basket_ball_item_info'}
                                    price={`${basketBall.count} x ${basketBall.ball.price} = ${basketBall.count*basketBall.ball.price}`}
                                    allowRouteOnClick={false}
+                                   showBasketButton = {false}
                                    showInfo={true}>
 
                     <div className={'ball_item_buy ball_item_buy_basket'}>

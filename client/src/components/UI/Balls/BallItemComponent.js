@@ -1,11 +1,9 @@
-import React from 'react';
-import {useHistory} from "react-router-dom";
-import {BALL_PAGE_ROUTE} from "../../../utils/Consts";
+import React, {useState} from 'react';
 import BallItemPrice from "./BallItemPrice";
+import OneBall from "../OneBall/OneBall";
 
 const BallItemComponent = (props) => {
-
-    const history = useHistory()
+    const [modalVisible, setModalVisible] = useState(false)
 
     let ballInfo
     if (props.showInfo){
@@ -26,22 +24,28 @@ const BallItemComponent = (props) => {
         </div>
     }
 
-    const routingToBallPage = () => {
+    const routingToBallPage = (event) => {
+        event.stopPropagation()
         if (props.allowRouteOnClick)
-            history.push(`${BALL_PAGE_ROUTE}/${props.ball.id}`)
+            setModalVisible(true)
     }
 
-    const imageRoutingToBallPage = () => {
-        history.push(`${BALL_PAGE_ROUTE}/${props.ball.id}`)
+    const imageRoutingToBallPage = (event) => {
+        event.stopPropagation()
+        setModalVisible(true)
     }
 
+    const closeModal = (event) => {
+        event.stopPropagation()
+        setModalVisible(false)
+    }
 
     return (
         <div className={`ball_item ${props.ballItemClassName}`}
-             onClick={routingToBallPage}>
+             onClick={(event)=>{routingToBallPage(event)}}>
 
             <img className={'ball_item_image'}
-                 onClick={imageRoutingToBallPage}
+                 onClick={(event)=>{imageRoutingToBallPage(event)}}
                  src={process.env.REACT_APP_API_URL + props.ball.image}/>
 
                 <div className={props.ballItemInfoClassName}>
@@ -58,6 +62,7 @@ const BallItemComponent = (props) => {
 
                     {props.children}
                 </div>
+            <OneBall ball={props.ball} visible={modalVisible} showBasketButton={props.showBasketButton} setVisible={closeModal}/>
         </div>
     );
 };
