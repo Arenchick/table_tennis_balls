@@ -1,12 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {changeBasketBallCount, deleteOneBasketBall, getAllBaksetBalls} from "../http/BasketApi";
+import {changeBasketBallCount, deleteOneBasketBall, getAllBasketBalls} from "../http/BasketApi";
 import {Context} from "../index";
 import BasketBallsList from "../components/UI/Basket/BasketBallsList";
 import {observer} from "mobx-react-lite";
 import BuyButton from "../components/UI/Buttons/BuyButton";
 import {useHistory} from "react-router-dom";
 import {ORDER_PAGE_ROUTE} from "../utils/Consts";
-import * as events from "events";
 
 const Basket = observer(() => {
 
@@ -19,7 +18,7 @@ const Basket = observer(() => {
     const [allPrice, setAllPrice] = useState(0)
 
     useEffect(()=>{
-        getAllBaksetBalls(user.user.id).then(data =>{
+        getAllBasketBalls(user.user.id).then(data =>{
             setAllBasketBalls([...data])
             setSelectedBasketBalls([...data])
 
@@ -62,7 +61,7 @@ const Basket = observer(() => {
 
     const deleteBasketBall = (basketBallId) => {
         deleteOneBasketBall(basketBallId).then(data => {
-            getAllBaksetBalls(user.user.id).then(data => {
+            getAllBasketBalls(user.user.id).then(data => {
                 setAllBasketBalls(data)
             })
         })

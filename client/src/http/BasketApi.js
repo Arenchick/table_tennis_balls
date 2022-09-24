@@ -1,11 +1,11 @@
 import {$host} from "./index";
 
-export const getAllBaksetBalls = async (basketId) => {
+export const getAllBasketBalls = async (basketId) => {
     const {data} = await $host.get('api/basketBall' , {params: {basketId}})
     return data
 }
 
-export const getAllBaksetBallsCount = async () => {
+export const getAllBasketBallsCount = async () => {
     const {data} = await $host.get('api/basketBall/count')
     return data
 }
