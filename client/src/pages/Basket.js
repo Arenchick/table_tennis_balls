@@ -7,7 +7,7 @@ import BuyButton from "../components/UI/Buttons/BuyButton";
 import {useHistory} from "react-router-dom";
 import {ORDER_PAGE_ROUTE} from "../utils/Consts";
 import BasketOrderItem from "../components/UI/Basket/BasketOrderItem";
-
+// import  "../../../server/index";
 const Basket = observer(() => {
 
     const history = useHistory()
@@ -84,7 +84,11 @@ const Basket = observer(() => {
 
     const orderClick = (event) => {
         history.push(`${ORDER_PAGE_ROUTE}`)
+        // transporter.sendMail(mailOptions)
+        // sendAll()
+
     }
+
 
     return (
         <div className={'Basket_Page'}>

@@ -6,6 +6,7 @@ import Container from "./components/UI/Container/Container";
 import Header from "./components/UI/Header/Header";
 import {Context} from "./index";
 import {check} from "./http/userApi";
+import Footer from "./components/UI/Footer/footer";
 
 const App = () => {
 
@@ -24,6 +25,7 @@ const App = () => {
             <Container>
                 <Header/>
                 <AppRouter/>
+                <Footer/>
             </Container>
     </BrowserRouter>
   );
