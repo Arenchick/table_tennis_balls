@@ -4,7 +4,7 @@ const router = new Router()
 const basketBallController = require('../controllers/basketBallController')
 
 router.post('/',basketBallController.Create)
-router.put('/:basketId',basketBallController.UpdateCount)
+router.put('/:ballId',basketBallController.UpdateCount)
 router.get('/',basketBallController.GetAll)
 router.get('/allCount',basketBallController.GetAllCount)
 router.get('/count/',basketBallController.GetOneBallCount)
