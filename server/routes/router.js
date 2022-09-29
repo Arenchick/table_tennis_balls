@@ -10,7 +10,7 @@ const starRouter = require('./starRouter')
 const brandRouter = require('./brandRouter')
 const typeRouter = require('./typeRouter')
 const producerCountryRouter = require('./producerCountryRouter')
-
+const senMailRouter= require('./orderRouter')
 router.use('/user', userRouter)
 router.use('/ball', ballRouter)
 router.use('/ballInfo', ballInfoRouter)
@@ -19,6 +19,7 @@ router.use('/basketBall', basketBallRouter)
 router.use('/star', starRouter)
 router.use('/brand', brandRouter)
 router.use('/type', typeRouter)
+router.use('/sendmail', senMailRouter)
 router.use('/producerCountry', producerCountryRouter)
 
 module.exports = router

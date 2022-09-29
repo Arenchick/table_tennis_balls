@@ -9,73 +9,58 @@ import {createBall} from "../../../http/ballApi";
 const CreateBall = observer(() => {
     const {ballStore} = useContext(Context)
     const [name, setName] = useState('')
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState()
     const [file, setFile] = useState(null)
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState()
+    const [ballInfoId, setBallInfoId] = useState()
 
-    useEffect(() => {
-        fetchTypes().then(data => ballStore.setTypes(data))
-        fetchBrands().then(data => ballStore.setBrands(data))
-    }, [])
+    // useEffect(() => {
+    //     fetchTypes().then(data => ballStore.setTypes(data))
+    //     fetchBrands().then(data => ballStore.setBrands(data))
+    // }, [])
     const selectFile = e => {
         setFile(e.target.files[0])
     }
 
-    const addDevice = () => {
+    const addBall = () => {
         const formData = new FormData()
         formData.append('name', name)
         formData.append('price', `${price}`)
         formData.append('count', `${count}`)
-        formData.append('img', file)
-        // formData.append('ballInfoId', JSON.stringify(info))
+        formData.append('image:'+file,file)
+        formData.append('ballInfoId', JSON.stringify(ballInfoId))
         createBall(formData)
     }
-    console.log(ballStore.types)
+
     return (
         <div>
-            {/*селекты нахуй не нужны просто хотел понять как взаимодействовать с балинфо, хуй знает пока что))*/}
-            <select>
-
-                {ballStore.types.map(type =>
-                    <option
-                        onClick={() => ballStore.setSelectedType(type)}
-                        key={type.id}
-                    >
-                        {type.name}
-                    </option>
-                )}
-
-            </select>
-            <select >
-
-                {ballStore.brands.map(brands =>
-                    <option
-                        onClick={() => ballStore.setSelectedBrand(brands)}
-                        key={brands.id}
-                    >
-                        {brands.name}
-                    </option>
-                )}
-
-            </select>
             <TennisInput value={name}
                          onChange={e => setName(e.target.value)}
-
                          placeholder="Введите название устройства" />
-
             <TennisInput value={price}
                          onChange={e => setPrice(Number(e.target.value))}
-
                          placeholder="Введите стоимость устройства"
                          type="number"/>
-            <TennisInput type="file" onChange={selectFile}/>
 
-            <button
-                variant={"outline-dark"}
-                // onClick={addInfo}
-            >
-                Добавить новое свойство
-            </button>
+            <TennisInput type="file"
+                         // value = {file}
+                         onChange={selectFile}/>
+
+            <TennisInput value={count}
+                         onChange={e => setCount(Number(e.target.value))}
+                         placeholder="Введите количество"
+                         type="number"/>
+            <TennisInput value={ballInfoId}
+                         onChange={e => setBallInfoId(e.target.value)}
+                         placeholder="Введите свойства мяча"
+                         />
+            {/*<button*/}
+            {/*    variant={"outline-dark"}*/}
+            {/*    // onClick={addInfo}*/}
+            {/*>*/}
+            {/*    Добавить новое свойство*/}
+            {/*</button>*/}
+            <button onClick={addBall}>Добавить</button>
         </div>
     );
 });

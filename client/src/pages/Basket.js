@@ -30,7 +30,7 @@ const Basket = observer(() => {
 
             setAllPrice(price)
         })
-    },[])
+    },[user.user])
 
     useEffect(()=>{
         let price = 0
