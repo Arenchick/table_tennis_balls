@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Context} from "../index";
+import {Context} from "../App";
 import {getAllBasketBalls} from "../http/BasketApi";
 import BasketOrderList from "../components/UI/Basket/BasketOrderList";
 import TennisInput from "../components/UI/Input/TennisInput";

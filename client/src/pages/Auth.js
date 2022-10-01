@@ -3,13 +3,14 @@ import {NavLink, useHistory, useLocation} from "react-router-dom";
 import {login, registration} from "../http/userApi";
 import {BALLS_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/Consts";
 import {observer} from "mobx-react-lite";
-import {Context} from "../index";
+import {Context} from "../App";
 import GreenButton from "../components/UI/Buttons/GreenButton";
 import AuthForm from "../components/UI/Auth/AuthForm";
+import UserStore from "../store/UserStore";
 
 const Auth = observer(() => {
 
-    const {user} = useContext(Context)
+    const {user,setUser} = useContext(Context)
     const location = useLocation()
     const history = useHistory()
     const isLogin = location.pathname === LOGIN_ROUTE
@@ -29,13 +30,21 @@ const Auth = observer(() => {
                 data = await registration(email,name, password)
             }
 
-            console.log(data)
-            user.setUser(data)
-            user.setIsAuth(true)
+            let newUser = new UserStore()
+
+            newUser._isAuth = true
+            newUser._user = data
+
+            console.log('============')
+            console.log(newUser)
+            console.log('============')
+
+            setUser(newUser)
+
             history.push(BALLS_ROUTE)
 
         } catch (e) {
-            alert(e.response.data.message)
+            alert(e)
         }
     }
     return (

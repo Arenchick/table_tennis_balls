@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import TennisInput from "../components/UI/Input/TennisInput";
 import BallsList from "../components/UI/Balls/BallsList";
 import FilterList from "../components/UI/Filter/FilterList";
-import {Context} from "../index";
+import {Context} from "../App";
 
 const Balls = () => {
 

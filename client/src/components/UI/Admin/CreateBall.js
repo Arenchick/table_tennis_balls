@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
-import {Context} from "../../../index";
+import {Context} from "../../../App";
 import {fetchTypes} from "../../../http/typeApi";
 import {fetchBrands} from "../../../http/brandApi";
 import TennisInput from "../Input/TennisInput";

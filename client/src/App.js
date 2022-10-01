@@ -1,36 +1,51 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, createContext} from "react";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import './App.css'
 import Container from "./components/UI/Container/Container";
 import Header from "./components/UI/Header/Header";
-import {Context} from "./index";
 import {check} from "./http/userApi";
 import Footer from "./components/UI/Footer/Footer";
+import UserStore from "./store/UserStore";
+import BallStore from "./store/BallStore";
+import FiltersStore from "./store/FiltersStore";
+
+export const Context = createContext(null)
 
 const App = () => {
 
-    const {user}= useContext(Context)
-    const [isLoaded, setIsLoaded] = useState(false)
+    const [userStore, setUserStore] = useState(new UserStore())
+    const [load,setLoad] = useState(false)
 
     useEffect(() => {
         check().then(data => {
             if (data){
-                user.setUser(data)
-                user.setIsAuth(true)
+                userStore.setUser(data)
+                userStore.setIsAuth(true)
             }
-            setIsLoaded(true)
-        })
-    }, [user.isAuth])
+        }).finally(()=>{setLoad(true)})
+    }, [])
+
 
   return (
-    <BrowserRouter>
-            <Container>
-                <Header/>
-                <AppRouter/>
-                <Footer/>
-            </Container>
-    </BrowserRouter>
+      <Context.Provider value={{
+          user: userStore,
+          setUser: setUserStore,
+          ballStore: new BallStore(),
+          filterStore: new FiltersStore()
+      }}>
+          <BrowserRouter>
+              <Container>
+                  <Header/>
+                  {load ?
+                      <AppRouter/> :
+                      <div/>
+                  }
+                  <Footer/>
+              </Container>
+          </BrowserRouter>
+      </Context.Provider>
+
   );
 }
 

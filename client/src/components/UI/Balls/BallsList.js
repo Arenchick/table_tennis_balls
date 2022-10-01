@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
 import BallItem from "./BallItem";
-import {Context} from "../../../index";
+import {Context} from "../../../App";
 import {observer} from "mobx-react-lite";
 import {fetchBalls} from "../../../http/ballApi";
 

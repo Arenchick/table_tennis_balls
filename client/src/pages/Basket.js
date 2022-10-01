@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {changeBasketBallCount, deleteOneBasketBall, getAllBasketBalls} from "../http/BasketApi";
-import {Context} from "../index";
+import {Context} from "../App";
 import BasketBallsList from "../components/UI/Basket/BasketBallsList";
 import {observer} from "mobx-react-lite";
 import GreenButton from "../components/UI/Buttons/GreenButton";

@@ -1,17 +1,22 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {authRoutes, publicRoutes} from "../routes";
 import {BALLS_ROUTE} from "../utils/Consts";
-import {Context} from "../index";
+import {Context} from "../App";
 
 const AppRouter = () => {
 
     const {user} = useContext(Context)
 
+    // useEffect(()=>{
+    //     console.log(user)
+    //     console.log(user._isAuth)
+    // },[user])
+
     return (
         <div className={'App_Router'}>
         <Switch>
-            {user.isAuth && authRoutes.map(route =>
+            {user._isAuth && authRoutes.map(route =>
                 <Route key={route.path} component={route.component} path={route.path} exact />
             )}
             {publicRoutes.map(route =>

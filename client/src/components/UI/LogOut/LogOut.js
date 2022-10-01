@@ -1,14 +1,15 @@
 import React, {useContext, useEffect} from 'react';
-import {Context} from "../../../index";
+import {Context} from "../../../App";
 import LogOutButton from "../Buttons/LogOutButton";
 import {LOGIN_ROUTE} from "../../../utils/Consts";
 import {useHistory} from "react-router-dom";
+import UserStore from "../../../store/UserStore";
 
 const LogOut = ({visible,setVisible}) => {
 
     const history = useHistory()
 
-    const {user} = useContext(Context)
+    const {user,setUser} = useContext(Context)
 
     if (!visible)
         return null;
@@ -16,8 +17,8 @@ const LogOut = ({visible,setVisible}) => {
     const LogOutClick = (event) => {
         event.preventDefault()
 
-        user.setUser({})
-        user.setIsAuth(false)
+        setUser(new UserStore())
+        user._isAuth = false
         localStorage.setItem('token', '')
 
         console.log(user)

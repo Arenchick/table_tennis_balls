@@ -3,7 +3,7 @@ import basket from '../../../Assets/Basket.png'
 import login from '../../../Assets/Login.png'
 import {useHistory} from "react-router-dom";
 import {BASKET_ROUTE, LOGIN_ROUTE} from "../../../utils/Consts";
-import {Context} from "../../../index";
+import {Context} from "../../../App";
 import LogOut from "../LogOut/LogOut";
 
 const HeaderBasketLogin = () => {

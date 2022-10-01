@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Filter from "./Filter";
 import filterPic from '../../../Assets/Filter.png'
-import {Context} from "../../../index";
+import {Context} from "../../../App";
 import {observer} from "mobx-react-lite";
 import {fetchTypes} from "../../../http/typeApi";
 import {fetchBrands} from "../../../http/brandApi";

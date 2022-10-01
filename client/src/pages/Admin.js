@@ -10,8 +10,6 @@ const Admin = () => {
     const [deviceVisible, setDeviceVisible] = useState(false)
     return (
         <div>
-
-            <container className="d-flex flex-column">
                 {/*<button*/}
                 {/*    variant={"outline-dark"}*/}
                 {/*    className="mt-4 p-2"*/}
@@ -42,7 +40,6 @@ const Admin = () => {
                 <CreateStar/>
                 <h2>Новый мяч</h2>
                 <CreateBall/>
-            </container>
         </div>
     );
 };

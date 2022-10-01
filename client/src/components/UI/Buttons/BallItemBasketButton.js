@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import basketPicture from "../../../Assets/Basket.png";
 import {changeBasketBallCount, createBasketBall, getOneBasketBallCount} from "../../../http/BasketApi";
-import {Context} from "../../../index";
+import {Context} from "../../../App";
 
 const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) => {
 
