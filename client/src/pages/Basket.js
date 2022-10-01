@@ -17,18 +17,36 @@ const Basket = observer(() => {
     const [selectedBasketBalls, setSelectedBasketBalls] = useState([])
     const [allPrice, setAllPrice] = useState(0)
 
+    const deleteBall = (basketBallArray,setBasketBallArray,basketBall) => {
+
+        let deleteBasketBall = basketBallArray.find(ball => ball.id = basketBall.id)
+
+        if (deleteBasketBall){
+            let newSelectedBasketBalls = basketBallArray
+            newSelectedBasketBalls.splice(basketBallArray.indexOf(deleteBasketBall),1)
+            setBasketBallArray([...newSelectedBasketBalls])
+        }
+    }
+
+    const getAllPrice = (basketBalls) => {
+        let price = 0
+
+        basketBalls.forEach(basketBall => {
+            price = price + basketBall.ball.price*basketBall.count
+        })
+
+        return price
+    }
+
     useEffect(()=>{
         getAllBasketBalls(user.user.id).then(data =>{
-            setAllBasketBalls([...data])
-            setSelectedBasketBalls([...data])
 
-           let price = 0
+            let balls = [...data]
+            balls.forEach(basketBall => basketBall.selected = true)
 
-            data.forEach(basketBall => {
-                price = price + basketBall.ball.price*basketBall.count
-            })
+            setAllBasketBalls(balls)
 
-            setAllPrice(price)
+            setAllPrice(getAllPrice(data))
         })
     },[user.user])
 
@@ -36,10 +54,11 @@ const Basket = observer(() => {
         let price = 0
 
         allBasketBalls.forEach(basketBall => {
-            price = price + basketBall.ball.price*basketBall.count
+            if (basketBall.selected)
+                price = price + basketBall.ball.price*basketBall.count
         })
 
-        // select
+        selectedBalls()
 
         setAllPrice(price)
     },[allBasketBalls])
@@ -61,29 +80,41 @@ const Basket = observer(() => {
 
     const deleteBasketBall = (basketBallId) => {
         deleteOneBasketBall(basketBallId).then(data => {
-            getAllBasketBalls(user.user.id).then(data => {
-                setAllBasketBalls(data)
-            })
+            deleteBall(allBasketBalls,setAllBasketBalls,data)
         })
     }
 
     const select = (basketBall) => {
-        if (!selectedBasketBalls.includes(basketBall))
-            setSelectedBasketBalls([...selectedBasketBalls,basketBall])
+        let  newBalls = [...allBasketBalls]
 
-        let newPrice = allPrice + basketBall.ball.price*basketBall.count
-        setAllPrice(newPrice)
+        newBalls.forEach(ball => {
+            if (basketBall === ball)
+                ball.selected = true
+        })
+
+        setAllBasketBalls(newBalls)
     }
 
     const unselect = (basketBall) => {
-        if (selectedBasketBalls.includes(basketBall)){
-            let newSelectedBasketBalls = selectedBasketBalls
-            newSelectedBasketBalls.splice(selectedBasketBalls.indexOf(basketBall),1)
-            setSelectedBasketBalls([...newSelectedBasketBalls])
-        }
+        let  newBalls = [...allBasketBalls]
 
-        let newPrice = allPrice - basketBall.ball.price*basketBall.count
-        setAllPrice(newPrice)
+        newBalls.forEach(ball => {
+            if (basketBall === ball)
+                ball.selected = false
+        })
+
+        setAllBasketBalls(newBalls)
+    }
+
+    const selectedBalls = () => {
+        let basketBalls = []
+
+        allBasketBalls.forEach(ball => {
+            if (ball.selected)
+                basketBalls.push(ball)
+        })
+
+        setSelectedBasketBalls(basketBalls)
     }
 
     const orderClick = (event) => {

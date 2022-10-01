@@ -1,15 +1,10 @@
 // main: ../../../App.less
 
-.searchInput{
+.Input{
   display: inline-block;
   border: none;
   border-radius: 1rem;
   resize: none;
-
-  width: 75%;
-  padding: 1rem 2rem;
-
-  margin-bottom: 3rem;
 
   font-family: "Calibri Light";
   color: fade(@dark,80%);
@@ -26,7 +21,20 @@
 
   &:hover {
   background: @darkBackground;
+  }
+
+  &::selection {
+    background-color: @lightBackground;
+  }
 }
+
+.Search_Input{
+  width: 75%;
+  padding: 1rem 2rem;
+
+  margin-bottom: 3rem
+
+
 }
 
 .Auth_Input{

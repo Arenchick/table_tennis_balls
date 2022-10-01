@@ -124,14 +124,11 @@ option {
 .header_button:active {
   background-color: #c9bcb8;
 }
-.searchInput {
+.Input {
   display: inline-block;
   border: none;
   border-radius: 1rem;
   resize: none;
-  width: 75%;
-  padding: 1rem 2rem;
-  margin-bottom: 3rem;
   font-family: "Calibri Light";
   color: rgba(64, 56, 56, 0.8);
   font-weight: 800;
@@ -139,11 +136,19 @@ option {
   background: #e6e1e1;
   transition: background-color 0.2s linear;
 }
-.searchInput:focus {
+.Input:focus {
   background: #c9bcb8;
 }
-.searchInput:hover {
+.Input:hover {
   background: #c9bcb8;
+}
+.Input::selection {
+  background-color: #e6e1e1;
+}
+.Search_Input {
+  width: 75%;
+  padding: 1rem 2rem;
+  margin-bottom: 3rem;
 }
 .Auth_Input {
   width: 100%;

@@ -20,16 +20,20 @@ const Auth = observer(() => {
 
     const click = async (event) => {
         event.preventDefault()
+
         try {
             let data;
             if (isLogin) {
-                data = await login(email, password);
+                data = await login(email, password)
             } else {
-                data = await registration(email,name, password);
+                data = await registration(email,name, password)
             }
+
+            console.log(data)
             user.setUser(data)
             user.setIsAuth(true)
             history.push(BALLS_ROUTE)
+
         } catch (e) {
             alert(e.response.data.message)
         }

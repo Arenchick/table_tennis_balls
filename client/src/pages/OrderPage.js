@@ -11,8 +11,6 @@ const OrderPage = () => {
     const [allBasketBalls, setAllBasketBalls] = useState([])
     const [allPrice, setAllPrice] = useState(0)
 
-    const [textMessage, setTextMessage] = useState('')
-
     useEffect(()=>{
         getAllBasketBalls(user.user.id).then(data =>{
 
@@ -29,13 +27,7 @@ const OrderPage = () => {
         }).catch(error => {console.log(error.message)})
     },[user.user.id])
 
-    //
-    // useEffect(()=>{
-    //     sendMail(user.user.email, textMessage)
-    // },[textMessage])
-
     const send = () => {
-        // sendMail(user.user.email, 'jhgugjhgjhg')
         sendMail('Arenchik1@yandex.ru','hvjh').then(data => {
             console.log(data)
         })

@@ -1,9 +1,17 @@
 import React from 'react';
 
 const TennisInput = (props) => {
+
+    let className = 'Input Search_Input'
+
+    if (props.inputtype === 'search')
+        className = 'Input Search_Input'
+    if (props.inputtype === 'auth')
+        className = 'Input Auth_Input'
+
     return (
         <div style={{textAlign: "center"}}>
-            <input className={`searchInput ${props.optionallyClassName}`} {...props}/>
+            <input className={className} {...props}/>
         </div>
     );
 };

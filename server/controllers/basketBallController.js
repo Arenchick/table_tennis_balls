@@ -108,9 +108,10 @@ class BasketBallController {
         try {
             const {id} = request.query
 
+            const deletedBall = await BasketBall.findOne({where: {id}})
             await BasketBall.destroy({where: {id}})
 
-            return response.json("Объект успешно удален")
+            return response.json(deletedBall)
         }
         catch (error){
             return next(ApiError.BadRequest(error.message))
