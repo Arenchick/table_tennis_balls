@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {User,Basket} = require('../models/models')
 
-const generateJwt = (id, email, role) => {
+const generateJwt = (id, email, role, name) => {
     return jwt.sign(
-        {id, email, role},
+        {id, email, role, name},
         process.env.SECRET_KEY,
         {expiresIn: '24h'}
     )
@@ -29,7 +29,7 @@ class UserController {
         const user = await User.create({name,email,role,password:hashPassword})
         const basket = await Basket.create({userId: user.id})
 
-        const token = generateJwt(user.id, user.email, user.role)
+        const token = generateJwt(user.id, user.email, user.role, user.name)
 
         return response.json({token})
     }
@@ -50,12 +50,12 @@ class UserController {
             return next(ApiError.BadRequest('Указан неверный пароль'))
         }
 
-        const token = generateJwt(user.id, user.email, user.role)
+        const token = generateJwt(user.id, user.email, user.role, user.name)
         return response.json({token})
     }
 
     async Auth(request,response,next){
-        const token = generateJwt(request.user.id, request.user.email, request.user.role)
+        const token = generateJwt(request.user.id, request.user.email, request.user.role, request.user.name)
         return response.json({token})
     }
 }

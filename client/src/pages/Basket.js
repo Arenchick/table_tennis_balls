@@ -127,7 +127,7 @@ const Basket = observer(() => {
             <div className={'Basket_Order_List'}>
                 <h2 className={'Basket_Order_List_Title'}>Заказ</h2>
                 {selectedBasketBalls.map(basketBall =>
-                    <p key={basketBall.id} className={'Basket_Order_List_Ball_Name'}>• {basketBall.ball.name}, {basketBall.count}шт</p>
+                    <p key={basketBall.ball.id} className={'Basket_Order_List_Ball_Name'}>• {basketBall.ball.name}, {basketBall.count}шт</p>
                 )}
                 <h3 className={'Basket_Order_List_Price'}>{allPrice} р.</h3>
                 <div className={'Basket_Order_List_Buy_Button_Container'}>

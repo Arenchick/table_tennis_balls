@@ -15,11 +15,13 @@ const App = () => {
 
     useEffect(() => {
         check().then(data => {
-            user.setUser(data)
-            user.setIsAuth(true)
+            if (data){
+                user.setUser(data)
+                user.setIsAuth(true)
+            }
             setIsLoaded(true)
         })
-    }, [])
+    }, [user.isAuth])
 
   return (
     <BrowserRouter>
