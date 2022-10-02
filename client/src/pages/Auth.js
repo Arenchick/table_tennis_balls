@@ -7,7 +7,6 @@ import {Context} from "../App";
 import GreenButton from "../components/UI/Buttons/GreenButton";
 import AuthForm from "../components/UI/Auth/AuthForm";
 import UserStore from "../store/UserStore";
-import { MaskedInput, createDefaultMaskGenerator } from 'react-hook-mask';
 
 const Auth = observer(() => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import TennisInput from "../Input/TennisInput";
-import { MaskedInput, createDefaultMaskGenerator } from 'react-hook-mask';
+import TennisPhoneInput from "../Input/TennisPhoneInput";
 
 const AuthForm = ({email,setEmail,name,setName,password,setPassword,phone,setPhone,isLogin}) => {
     return (
@@ -11,10 +11,10 @@ const AuthForm = ({email,setEmail,name,setName,password,setPassword,phone,setPho
                                  value={name}
                                  onChange={e => setName(e.target.value)}
                                  type="text"/>
-                    <TennisInput inputtype={'auth'} placeholder="Номер телефона"
-                                 value={phone}
-                                 onChange={e => setPhone(e.target.value)}
-                                 type="text"/>
+                    <TennisPhoneInput placeholder="Номер телефона"
+                                      onChange={e => setPhone(e.target.value)}
+                                      value={phone}
+                                      inputtype={'auth'}/>
                 </div>
                 : null
 
