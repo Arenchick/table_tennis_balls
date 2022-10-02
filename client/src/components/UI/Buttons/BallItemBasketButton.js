@@ -11,6 +11,7 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
     const history = useHistory()
     const addingInBasket = (event) => {
         event.stopPropagation()
+
         if (!user._isAuth){
             history.push(LOGIN_ROUTE)
             return
@@ -33,7 +34,9 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
     }
 
     return (
-        <div className={`button ${ClassName}`} onClick={addingInBasket}>
+        <div className={`button ${ClassName}`}
+             style={{marginRight: "10px"}}
+             onClick={addingInBasket}>
             <div style={{marginRight: "5px"}}>В корзину</div>
             <img width={17.5}
                  height={17.5}

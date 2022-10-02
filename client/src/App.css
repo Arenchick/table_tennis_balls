@@ -423,7 +423,7 @@ option {
   width: auto;
   font-size: 1rem;
   padding: 4px;
-  margin: 0 10px 10px 10px;
+  margin: 0 0 10px 10px;
 }
 .ball_item_basket_button:hover {
   background-color: #e6e1e1;
@@ -609,12 +609,25 @@ option {
   right: 0;
   left: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(64, 56, 56, 0.3);
 }
 .LogOut_Modal {
-  position: fixed;
-  top: 65px;
-  right: 430px;
-  height: 10%;
+  height: 20%;
+  width: 15%;
+}
+.LogOut_Content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  padding: 15px;
+  background-color: #e6e1e1;
+  border-radius: 20px;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+  color: #403838;
 }
 .LogOut_User {
   text-align: end;
@@ -622,21 +635,17 @@ option {
 .LogOut_Name {
   font-size: 20px;
   font-weight: bolder;
+  margin-bottom: 10px;
+}
+.LogOut_Name:after {
+  content: "";
+  display: block;
+  background-color: #403838;
+  margin-top: 5px;
+  height: 1px;
 }
 .LogOut_Email {
   font-size: 16px;
   font-weight: lighter;
-}
-.LogOut_Content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  padding: 5px 10px;
-  background-color: rgba(230, 225, 225, 0.8);
-  border-radius: 20px;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
-  color: #403838;
 }
 /*# sourceMappingURL=App.css.map */

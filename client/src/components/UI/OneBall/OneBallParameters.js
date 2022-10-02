@@ -2,9 +2,8 @@ import React from 'react';
 
 const OneBallParameters = ({ballInfo}) => {
     try {
-
         return (
-            <div className={'Ball_Page_Para ms'}>
+            <div className={'Ball_Page_Params'}>
                 <h3 className={'Ball_Page_Params_Title'}>Характеристики:</h3>
                 <div className={'Ball_Page_Parameter'}>
                     <h5 className={'Ball_Page_Parameter_Title'}>Бренд:</h5>
