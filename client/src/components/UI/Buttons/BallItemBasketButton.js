@@ -2,13 +2,19 @@ import React, {useContext} from 'react';
 import basketPicture from "../../../Assets/Basket.png";
 import {changeBasketBallCount, createBasketBall, getOneBasketBallCount} from "../../../http/BasketApi";
 import {Context} from "../../../App";
+import {useHistory} from "react-router-dom";
+import {LOGIN_ROUTE} from "../../../utils/Consts";
 
 const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) => {
 
     const {user} = useContext(Context)
-
+    const history = useHistory()
     const addingInBasket = (event) => {
         event.stopPropagation()
+        if (!user._isAuth){
+            history.push(LOGIN_ROUTE)
+            return
+        }
 
         getOneBasketBallCount(ballId).then(data => {
             if(data >= 1){

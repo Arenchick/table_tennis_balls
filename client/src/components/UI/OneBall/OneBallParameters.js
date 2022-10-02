@@ -2,24 +2,25 @@ import React from 'react';
 
 const OneBallParameters = ({ballInfo}) => {
     try {
+
         return (
-            <div className={'Ball_Page_Params'}>
+            <div className={'Ball_Page_Para ms'}>
                 <h3 className={'Ball_Page_Params_Title'}>Характеристики:</h3>
                 <div className={'Ball_Page_Parameter'}>
-                    <h5 className={'Ball_Page_Parameter_Title'}>Brand:</h5>
+                    <h5 className={'Ball_Page_Parameter_Title'}>Бренд:</h5>
                     <p className={'Ball_Page_Parameter_Value'}>{ballInfo.brand.value}</p>
                 </div>
                 <div className={'Ball_Page_Parameter'}>
-                    <h5 className={'Ball_Page_Parameter_Title'}>Type:</h5>
+                    <h5 className={'Ball_Page_Parameter_Title'}>Тип:</h5>
                     <p className={'Ball_Page_Parameter_Value'}>{ballInfo.type.value}</p>
                 </div>
                 <div className={'Ball_Page_Parameter'}>
-                    <h5 className={'Ball_Page_Parameter_Title'}>Star:</h5>
+                    <h5 className={'Ball_Page_Parameter_Title'}>Звезд:</h5>
                     <p className={'Ball_Page_Parameter_Value'}>{ballInfo.star.value}</p>
                 </div>
                 <div className={'Ball_Page_Parameter'}>
-                    <h5 className={'Ball_Page_Parameter_Title'}>Producer Country:</h5>
-                    <p className={'Ball_Page_Parameter_Value'}>{ballInfo.producerCountry}</p>
+                    <h5 className={'Ball_Page_Parameter_Title'}>Страна производитель:</h5>
+                    <p className={'Ball_Page_Parameter_Value'}>{ballInfo.producer_country.value}</p>
                 </div>
             </div>
         );

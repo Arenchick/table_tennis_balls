@@ -10,13 +10,13 @@ const BallItemComponent = (props) => {
         ballInfo =
         <div className={'ball_item_info'}>
             <div>
-                <h6>Brand:</h6>
+                <h6>Бренд:</h6>
                 <div className={'ball_item_info_value'}>
                     {props.ball.ball_info.brand.value}
                 </div>
             </div>
             <div>
-                <h6>Star:</h6>
+                <h6>Звезд:</h6>
                 <div className={'ball_item_info_value'}>
                     {props.ball.ball_info.star.value}
                 </div>

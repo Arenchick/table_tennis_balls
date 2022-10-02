@@ -3,7 +3,7 @@ import {makeAutoObservable} from "mobx";
 export default class FiltersStore {
     constructor() {
         this._type = {
-            name: 'Type',
+            name: 'Тип',
             properties: [],
             allSelectedId: [],
             setSelectedId : (id) => {
@@ -14,7 +14,7 @@ export default class FiltersStore {
             }
         }
         this._brand = {
-            name: 'Brand',
+            name: 'Бренд',
             properties: [],
             allSelectedId: [],
             setSelectedId : (id) => {
@@ -25,7 +25,7 @@ export default class FiltersStore {
             }
         }
         this._star = {
-            name: 'Star',
+            name: 'Звезд',
             properties: [],
             allSelectedId: [],
             setSelectedId : (id) => {
@@ -36,7 +36,7 @@ export default class FiltersStore {
             }
         }
         this._producerCountry = {
-            name: 'Country',
+            name: 'Страна',
             properties: [],
             allSelectedId: [],
             setSelectedId : (id) => {
