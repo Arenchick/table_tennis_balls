@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {User,Basket} = require('../models/models')
 
-const generateJwt = (id, email, role, name) => {
+const generateJwt = (id, email, role, name, phone) => {
     return jwt.sign(
-        {id, email, role, name},
+        {id, email, role, name, phone},
         process.env.SECRET_KEY,
         {expiresIn: '24h'}
     )
@@ -13,10 +13,10 @@ const generateJwt = (id, email, role, name) => {
 
 class UserController {
     async Registration(request,response,next){
-        const {name, email, password, role} = request.body
+        const {name, email, password, role, phone} = request.body
 
-        if (!email || !password){
-            return next(ApiError.BadRequest('Некорректный email или пароль'))
+        if (!email || !password || !phone){
+            return next(ApiError.BadRequest('Некорректный email, номер телефона или пароль'))
         }
 
         const candidate = await User.findOne({where: {email}})
@@ -26,10 +26,10 @@ class UserController {
 
         const hashPassword = await bcrypt.hash(password,5)
 
-        const user = await User.create({name,email,role,password:hashPassword})
+        const user = await User.create({name,email,role, phone,password:hashPassword})
         const basket = await Basket.create({userId: user.id})
 
-        const token = generateJwt(user.id, user.email, user.role, user.name)
+        const token = generateJwt(user.id, user.email, user.role, user.name, user.phone)
 
         return response.json({token})
     }
@@ -50,12 +50,12 @@ class UserController {
             return next(ApiError.BadRequest('Указан неверный пароль'))
         }
 
-        const token = generateJwt(user.id, user.email, user.role, user.name)
+        const token = generateJwt(user.id, user.email, user.role, user.name, user.phone)
         return response.json({token})
     }
 
     async Auth(request,response,next){
-        const token = generateJwt(request.user.id, request.user.email, request.user.role, request.user.name)
+        const token = generateJwt(request.user.id, request.user.email, request.user.role, request.user.name, request.user.phone)
         return response.json({token})
     }
 }

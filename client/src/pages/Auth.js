@@ -7,6 +7,7 @@ import {Context} from "../App";
 import GreenButton from "../components/UI/Buttons/GreenButton";
 import AuthForm from "../components/UI/Auth/AuthForm";
 import UserStore from "../store/UserStore";
+import { MaskedInput, createDefaultMaskGenerator } from 'react-hook-mask';
 
 const Auth = observer(() => {
 
@@ -18,6 +19,7 @@ const Auth = observer(() => {
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
+    const [phone, setPhone] = useState('')
 
     const click = async (event) => {
         event.preventDefault()
@@ -27,7 +29,7 @@ const Auth = observer(() => {
             if (isLogin) {
                 data = await login(email, password)
             } else {
-                data = await registration(email,name, password)
+                data = await registration(email,name, password, phone)
             }
 
             let newUser = new UserStore()
@@ -35,6 +37,8 @@ const Auth = observer(() => {
             newUser._isAuth = true
             newUser._user = data
             setUser(newUser)
+
+            console.log(newUser)
 
             history.push(BALLS_ROUTE)
 
@@ -45,7 +49,15 @@ const Auth = observer(() => {
     return (
         <div className={'Auth'}>
             <h2 className={'Auth_Title'}>{isLogin ? 'Авторизация' : "Регистрация"}</h2>
-            <AuthForm name={name} email={email} password={password} setName={setName} setEmail={setEmail} setPassword={setPassword} isLogin={isLogin}/>
+            <AuthForm name={name}
+                      email={email}
+                      password={password}
+                      phone={phone}
+                      setName={setName}
+                      setEmail={setEmail}
+                      setPassword={setPassword}
+                      setPhone={setPhone}
+                      isLogin={isLogin}/>
             <div className={'Auth_Footer'}>
                 {isLogin ?
                     <div className={'Auth_Link_Text'}>
