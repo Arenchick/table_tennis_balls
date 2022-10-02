@@ -312,6 +312,9 @@ option {
 .Filter_Name:active {
   background-color: #c9bcb8;
 }
+.Filter_Container {
+  max-width: 130px;
+}
 .Filter_List {
   color: #403838;
   font-size: 1.2rem;

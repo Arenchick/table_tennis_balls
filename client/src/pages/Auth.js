@@ -10,7 +10,7 @@ import UserStore from "../store/UserStore";
 
 const Auth = observer(() => {
 
-    const {user,setUser} = useContext(Context)
+    const {setUser} = useContext(Context)
     const location = useLocation()
     const history = useHistory()
     const isLogin = location.pathname === LOGIN_ROUTE
@@ -34,11 +34,6 @@ const Auth = observer(() => {
 
             newUser._isAuth = true
             newUser._user = data
-
-            console.log('============')
-            console.log(newUser)
-            console.log('============')
-
             setUser(newUser)
 
             history.push(BALLS_ROUTE)

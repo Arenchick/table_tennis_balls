@@ -29,7 +29,7 @@ const FilterList = observer(() => {
     filters.push(filterStore.type, filterStore.brand, filterStore.star, filterStore.producerCountry, filterStore.priceSort)
 
     return (
-        <div>
+        <div className={'Filter_Container'}>
             <div className={'Filter_Button'}
                  onClick={changeHidden}>
                 <img src={filterPic}
@@ -38,12 +38,10 @@ const FilterList = observer(() => {
                 <p>Фильтры</p>
             </div>
             <div>
-                <div className={'Filter_Container'}>
-                    <div className={'Filter_List'}>
-                        {filters.map(filter =>
-                            <Filter key={filter.name} filter={filter}/>
-                        )}
-                    </div>
+                <div className={'Filter_List'}>
+                    {filters.map(filter =>
+                        <Filter key={filter.name} filter={filter}/>
+                    )}
                 </div>
             </div>
         </div>

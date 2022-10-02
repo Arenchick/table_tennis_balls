@@ -30,7 +30,7 @@ const LogOut = ({visible,setVisible}) => {
 
     const BasketRouteClick = (event) => {
         event.preventDefault()
-        
+
         setVisible(event)
 
         history.push(BASKET_ROUTE)
