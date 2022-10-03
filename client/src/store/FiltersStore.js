@@ -25,7 +25,7 @@ export default class FiltersStore {
             }
         }
         this._star = {
-            name: 'Звезд',
+            name: 'Звезды',
             properties: [],
             allSelectedId: [],
             setSelectedId : (id) => {
@@ -63,7 +63,6 @@ export default class FiltersStore {
             ],
             setSelectedId : (id) => {
                 this._priceSort.selectedId = id
-                console.log(this._priceSort.selectedId)
             }
         }
 

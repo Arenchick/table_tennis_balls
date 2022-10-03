@@ -13,7 +13,7 @@ const HeaderNavBar = () => {
                      to={ABOUT_ROUTE}>О нас</NavLink>
             <NavLink className={'header_navbar_link'}
                      to={CONTACTS_ROUTE}>Контакты</NavLink>
-            {user._user.role == "ADMIN" ?
+            {user._user.role === "ADMIN" ?
 
                     <NavLink className={'header_navbar_link'}
                              to={ADMIN_ROUTE}>Админ

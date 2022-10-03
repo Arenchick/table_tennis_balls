@@ -20,7 +20,7 @@ const Header = (props) => {
             <div className={'header_content'}>
                 <div className={'header_logo'}
                      onClick={(event) => logoClick(event)}>
-                    <img src={logo}/>
+                    <img alt={'BestBalls'} src={logo}/>
                 </div>
                 <HeaderNavBar/>
                 <HeaderBasketLogin/>

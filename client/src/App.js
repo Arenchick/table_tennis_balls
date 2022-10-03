@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState, createContext} from "react";
+import React, {useEffect, useState, createContext} from "react";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import './App.css'
@@ -9,6 +9,7 @@ import Footer from "./components/UI/Footer/Footer";
 import UserStore from "./store/UserStore";
 import BallStore from "./store/BallStore";
 import FiltersStore from "./store/FiltersStore";
+import AdminParametersStore from "./store/AdminParametersStore";
 
 export const Context = createContext(null)
 
@@ -32,7 +33,8 @@ const App = () => {
           user: userStore,
           setUser: setUserStore,
           ballStore: new BallStore(),
-          filterStore: new FiltersStore()
+          filterStore: new FiltersStore(),
+          adminParametersStore: new AdminParametersStore()
       }}>
           <BrowserRouter>
               <Container>

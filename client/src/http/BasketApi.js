@@ -1,4 +1,4 @@
-import {$authHost, $host} from "./index";
+import {$authHost} from "./index";
 
 export const getAllBasketBalls = async (basketId) => {
     const {data} = await $authHost.get('api/basketBall' , {params: {basketId}})

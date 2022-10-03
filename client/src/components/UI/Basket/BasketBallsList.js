@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import BasketBallItem from "./BasketBallItem";
 
 const BasketBallsList = ({basketBalls, deleteBasketBall, changeCount, select, unselect}) => {

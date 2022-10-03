@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import BallItemBasketButton from "../Buttons/BallItemBasketButton";
 import OneBallParameters from "./OneBallParameters";
 import OneBallImage from "./OneBallImage";

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {authRoutes, publicRoutes} from "../routes";
 import {BALLS_ROUTE} from "../utils/Consts";
@@ -7,11 +7,6 @@ import {Context} from "../App";
 const AppRouter = () => {
 
     const {user} = useContext(Context)
-
-    // useEffect(()=>{
-    //     console.log(user)
-    //     console.log(user._isAuth)
-    // },[user])
 
     return (
         <div className={'App_Router'}>
