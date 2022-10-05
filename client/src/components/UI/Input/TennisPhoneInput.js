@@ -12,7 +12,6 @@ const TennisPhoneInput = (props) => {
 
     return (
         <div style={{textAlign: "center"}}>
-            {/*<input className={className} {...props}/>*/}
             <InputMask className={className} mask={'+7 (999) 999-99-99'} {...props}/>
         </div>
     );

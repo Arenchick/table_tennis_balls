@@ -7,7 +7,10 @@ class BallInfoController {
         try {
             const {starId, brandId, typeId, producerCountryId} = request.body
 
-            const ballInfo = await BallInfo.create({starId, brandId, typeId, producerCountryId})
+            let ballInfo = await BallInfo.findOne({where: {starId, brandId, typeId, producerCountryId}})
+
+            if (!ballInfo)
+                ballInfo = await BallInfo.create({starId, brandId, typeId, producerCountryId})
 
             return response.json(ballInfo)
         }
