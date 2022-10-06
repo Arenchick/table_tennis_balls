@@ -11,6 +11,6 @@ export const getOneBall = async (ballId) => {
 }
 
 export const createBall = async (ball) => {
-    const {data} = await $authHost.post('api/ball', {ball})
+    const {data} = await $authHost.post('api/ball', ball)
     return data
 }

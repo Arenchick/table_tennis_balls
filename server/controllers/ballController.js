@@ -6,7 +6,6 @@ const {Op} = require("sequelize");
 
 const getFileName = (file) => {
     const fileName = uuid.v4() + ".jpg"
-    console.log(file)
     file.mv(path.resolve(__dirname,'..','static', fileName))
     return fileName
 }

@@ -1,33 +1,65 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import TennisInput from "../../Input/TennisInput";
 import GreenButton from "../../Buttons/GreenButton";
+import {Context} from "../../../../App";
+import {createBallInfo} from "../../../../http/ballInfoApi";
+import {createBall} from "../../../../http/ballApi";
 
 const AdminBallCreate = () => {
+
+    const {adminParametersStore} = useContext(Context)
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [count, setCount] = useState(0)
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState(null)
+
+    const BallCreate = (event) => {
+        event.preventDefault()
+
+        const ballInfo = {
+            typeId: adminParametersStore.type.selectedId,
+            brandId: adminParametersStore.brand.selectedId,
+            starId: adminParametersStore.star.selectedId,
+            producerCountryId: adminParametersStore.producerCountry.selectedId,
+        }
+
+        createBallInfo(ballInfo.starId, ballInfo.brandId, ballInfo.typeId, ballInfo.producerCountryId).then(data =>{
+
+            const newBall = new FormData()
+            newBall.append('name', name)
+            newBall.append('price', price.toString())
+            newBall.append('count', count.toString())
+            newBall.append('image', image)
+            newBall.append('ballInfoId', data.id)
+
+            createBall(newBall).then(data => {
+                console.log(data)
+            })
+        })
+    }
 
     return (
-        <div>
+        <div style={{width: "100%"}}>
+            <h6>Название</h6>
             <TennisInput placeholder='Название'
                          type='text'
                          value={name}
                          onChange={e => setName(e.target.value)}/>
-            <TennisInput placeholder='Цена'
-                         type='number'
-                         value={price}
+            <h6>Цена</h6>
+            <TennisInput type='number'
+                         placeholder='Цена'
                          onChange={e => setPrice(e.target.value)}/>
-            <TennisInput placeholder='Кол-во'
+            <h6>Количество</h6>
+            <TennisInput placeholder='Количество'
                          type='number'
-                         value={count}
                          onChange={e => setCount(e.target.value)}/>
+            <h6>Изображение</h6>
             <TennisInput placeholder='Изображение'
                          type="file"
-                         value={image}
-                         onChange={e => setImage(e.target.value)}/>
-            <GreenButton text='Добавить' click={(event)=>{console.log('Add')}}/>
+                         accept=".png,.jpg,.jpeg"
+                         onChange={e => setImage(e.target.files[0])}/>
+            <GreenButton text='Добавить' click={(event)=>{BallCreate(event)}}/>
         </div>
     );
 };

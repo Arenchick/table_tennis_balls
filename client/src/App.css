@@ -49,6 +49,10 @@ option {
   border: none;
   outline: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 .App_Router {
   flex: 1 1 auto;
 }
