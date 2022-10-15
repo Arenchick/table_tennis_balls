@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AdminParameterCreate from "./AdminParameterCreate";
 import FilterItem from "../../Filter/FilterItem";
 
-const AdminParameter = ({parameter}) => {
+const AdminParameter = ({parameter, setAdding}) => {
 
     const [isHidden, setHidden] = useState(true)
     const changeHidden = () => {
@@ -16,7 +16,9 @@ const AdminParameter = ({parameter}) => {
                 {parameter.name}
             </div>
             <div hidden={isHidden}>
-                <AdminParameterCreate parameterName={parameter.name}/>
+                <AdminParameterCreate
+                    setAdding={setAdding}
+                parameterName={parameter.name}/>
                 {parameter.properties.map(property =>
                     <FilterItem key={property.id}
                                 property={property}

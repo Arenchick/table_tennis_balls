@@ -7,7 +7,7 @@ import TennisInput from "../../Input/TennisInput";
 import GreenButton from "../../Buttons/GreenButton";
 import {Context} from "../../../../App";
 
-const AdminParameterCreate = ({parameterName}) => {
+const AdminParameterCreate = ({parameterName, setAdding}) => {
 
     const {adminParametersStore} = useContext(Context)
 
@@ -16,7 +16,9 @@ const AdminParameterCreate = ({parameterName}) => {
     const CreateParameter = (event) => {
         switch (parameterName) {
             case 'Тип':
+                /////////////////          Includes check
                 createType(value).then(data=>{
+                    setAdding(JSON.stringify(data))
                 })
                 break
             case 'Бренд':
@@ -35,11 +37,12 @@ const AdminParameterCreate = ({parameterName}) => {
     }
 
     return (
-        <div style={{display:"flex"}}>
+        <div className={'Admin_ParameterCreateContainer'}>
             <TennisInput value={value}
+                         inputtype={'admin'}
                          onChange={e => setValue(e.target.value)}
-                         placeholder={"Введите название параметра"}/>
-            <GreenButton text={'Добавить'} click={(event)=>{CreateParameter(event)}}/>
+                         placeholder={"Параметр"}/>
+            <GreenButton AdminParameter={true} text={'Добавить'} click={(event)=>{CreateParameter(event)}}/>
         </div>
     );
 };

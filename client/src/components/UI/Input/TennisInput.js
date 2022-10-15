@@ -8,6 +8,8 @@ const TennisInput = (props) => {
         className = 'Input Search_Input'
     if (props.inputtype === 'auth')
         className = 'Input Auth_Input'
+    if (props.inputtype === 'admin')
+        className = 'Input Admin_Input'
 
     return (
         <div style={{textAlign: "center"}}>

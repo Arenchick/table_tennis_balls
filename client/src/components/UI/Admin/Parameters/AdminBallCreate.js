@@ -40,26 +40,32 @@ const AdminBallCreate = () => {
     }
 
     return (
-        <div style={{width: "100%"}}>
+        <div className={'Admin_BallCreateContainer'}>
             <h6>Название</h6>
             <TennisInput placeholder='Название'
+                         inputtype={'auth'}
                          type='text'
                          value={name}
                          onChange={e => setName(e.target.value)}/>
             <h6>Цена</h6>
             <TennisInput type='number'
+                         inputtype={'auth'}
                          placeholder='Цена'
                          onChange={e => setPrice(e.target.value)}/>
             <h6>Количество</h6>
             <TennisInput placeholder='Количество'
+                         inputtype={'auth'}
                          type='number'
                          onChange={e => setCount(e.target.value)}/>
             <h6>Изображение</h6>
             <TennisInput placeholder='Изображение'
+                         inputtype={'auth'}
                          type="file"
                          accept=".png,.jpg,.jpeg"
                          onChange={e => setImage(e.target.files[0])}/>
-            <GreenButton text='Добавить' click={(event)=>{BallCreate(event)}}/>
+            <div className={'Admin_BallCreateButtonContainer'}>
+                <GreenButton text='Добавить' click={(event)=>{BallCreate(event)}}/>
+            </div>
         </div>
     );
 };
