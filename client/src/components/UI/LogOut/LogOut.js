@@ -48,7 +48,7 @@ const LogOut = ({visible,setVisible}) => {
                         <p className={'LogOut_Email'} style={{marginTop: "5px"}}>{user.user.phone}</p>
                     </div>
                     <BasketRouteButton text='Моя Корзина' click={(event)=>BasketRouteClick(event)}/>
-                    <LogOutButton click={(event) => LogOutClick(event)}/>
+                    <LogOutButton click={(event) => LogOutClick(event)} text={'Выйти'}/>
                 </div>
             </div>
         </div>

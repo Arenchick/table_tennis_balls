@@ -475,6 +475,16 @@ input::-webkit-inner-spin-button {
 .Delete_Button:active {
   background-color: #ff7a7a;
 }
+.DeleteRed_Button {
+  background-color: rgba(255, 122, 122, 0.4);
+  transition: background-color 0.2s linear;
+}
+.DeleteRed_Button:hover {
+  background-color: rgba(255, 122, 122, 0.7);
+}
+.DeleteRed_Button:active {
+  background-color: #ff7a7a;
+}
 .LogOut_Button {
   width: 100%;
   background-color: rgba(255, 122, 122, 0.4);
@@ -681,5 +691,15 @@ input::-webkit-inner-spin-button {
 .Admin_BallCreateButtonContainer {
   display: flex;
   justify-content: end;
+}
+.Admin_BallList {
+  width: 25%;
+  font-size: 1.3rem;
+}
+.Admin_BallListItem {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 /*# sourceMappingURL=App.css.map */

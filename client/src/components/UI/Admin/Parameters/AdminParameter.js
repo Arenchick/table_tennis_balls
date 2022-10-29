@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AdminParameterCreate from "./AdminParameterCreate";
 import FilterItem from "../../Filter/FilterItem";
 
@@ -9,6 +9,11 @@ const AdminParameter = ({parameter, setAdding}) => {
         setHidden(!isHidden)
     }
 
+    const adding = (prop) => {
+        setAdding(prop)
+        changeHidden()
+    }
+
     return (
         <div>
             <div className={'Filter_Name'}
@@ -17,7 +22,7 @@ const AdminParameter = ({parameter, setAdding}) => {
             </div>
             <div hidden={isHidden}>
                 <AdminParameterCreate
-                    setAdding={setAdding}
+                    setAdding={adding}
                 parameterName={parameter.name}/>
                 {parameter.properties.map(property =>
                     <FilterItem key={property.id}

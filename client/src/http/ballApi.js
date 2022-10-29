@@ -14,3 +14,8 @@ export const createBall = async (ball) => {
     const {data} = await $authHost.post('api/ball', ball)
     return data
 }
+
+export const deleteOneBall = async (ballId) => {
+    const {data} = await $host.delete(`/api/ball/${ballId}`)
+    return data
+}

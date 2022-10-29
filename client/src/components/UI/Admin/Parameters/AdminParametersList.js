@@ -24,9 +24,9 @@ const AdminParametersList = observer(() => {
         <div className={'Admin_ParametersList'}>
             <h2>Характеристики:</h2>
             <AdminParameter adding={adding} setAdding={setAdding} parameter={adminParametersStore.type}/>
-            <AdminParameter parameter={adminParametersStore.brand}/>
-            <AdminParameter parameter={adminParametersStore.star}/>
-            <AdminParameter parameter={adminParametersStore.producerCountry}/>
+            <AdminParameter adding={adding} setAdding={setAdding} parameter={adminParametersStore.brand}/>
+            <AdminParameter adding={adding} setAdding={setAdding} parameter={adminParametersStore.star}/>
+            <AdminParameter adding={adding} setAdding={setAdding} parameter={adminParametersStore.producerCountry}/>
         </div>
     );
 });

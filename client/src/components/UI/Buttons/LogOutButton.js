@@ -1,10 +1,10 @@
 import React from 'react';
 
-const LogOutButton = ({click}) => {
+const LogOutButton = ({click, text}) => {
     return (
         <div onClick={(event) => click(event)}
              className={'button LogOut_Button'}>
-            Выйти
+            {text}
         </div>
     );
 };
