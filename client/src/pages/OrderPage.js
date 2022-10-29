@@ -4,28 +4,25 @@ import {getAllBasketBalls} from "../http/BasketApi";
 import BasketOrderList from "../components/UI/Basket/BasketOrderList";
 import TennisInput from "../components/UI/Input/TennisInput";
 import {sendMail} from "../http/mailApi";
+import {observer} from "mobx-react-lite";
+import GreenButton from "../components/UI/Buttons/GreenButton";
 
-const OrderPage = () => {
-    const {user} = useContext(Context)
+const OrderPage = observer(() => {
+    const {user, ballStore} = useContext(Context)
 
-    const [allBasketBalls, setAllBasketBalls] = useState([])
     const [allPrice, setAllPrice] = useState(0)
 
-    useEffect(()=>{
-        getAllBasketBalls(user.user.id).then(data =>{
+    useEffect(()=> {
+       getAllPrice()
+    },[])
 
-            let balls = [...data]
-            balls.forEach(ball => ball.selected = true)
-            setAllBasketBalls([...balls])
+    const getAllPrice = () => {
+        let price = 0
 
-            let price = 0
-            balls.forEach(basketBall => {
-                price = price + basketBall.ball.price*basketBall.count
-            })
-            setAllPrice(price)
+        ballStore.orderedBalls.forEach(orderedBall => price += orderedBall.ball.price*orderedBall.count)
 
-        }).catch(error => {console.log(error.message)})
-    },[user.user.id])
+        setAllPrice(price)
+    }
 
     const send = () => {
         sendMail('Arenchik1@yandex.ru','hvjh').then(data => {
@@ -36,14 +33,14 @@ const OrderPage = () => {
     return (
         <div>
             Ваш заказ:
-            <div className={'Basket_Page'}>
-                <BasketOrderList basketBalls={allBasketBalls}/>
-                {allPrice}
+            <div>
+                <BasketOrderList basketBalls={ballStore.orderedBalls}/>
+                <p>{allPrice} р.</p>
             </div>
             В ближайшее время с вами свяжется наш курьер.
-            <button onClick={send}/>
+            <GreenButton onClick={send} text={'Заказать'}/>
         </div>
     );
-};
+});
 
 export default OrderPage;

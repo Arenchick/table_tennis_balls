@@ -11,7 +11,7 @@ const Basket = observer(() => {
 
     const history = useHistory()
 
-    const {user} = useContext(Context)
+    const {user,ballStore} = useContext(Context)
 
     const [allBasketBalls, setAllBasketBalls] = useState([])
     const [selectedBasketBalls, setSelectedBasketBalls] = useState([])
@@ -118,6 +118,8 @@ const Basket = observer(() => {
     }
 
     const orderClick = (event) => {
+        ballStore.setOrderedBall(selectedBasketBalls)
+
         history.push(`${ORDER_PAGE_ROUTE}`)
     }
 

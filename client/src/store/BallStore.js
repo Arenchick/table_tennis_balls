@@ -1,46 +1,28 @@
 import {makeAutoObservable} from "mobx";
+import orderPage from "../pages/OrderPage";
 
 export default class BallStore {
     constructor() {
         this._balls = []
-        this._types = []
-        this._brands = []
-        this._devices = []
-        this._сount = 0
-        this._selectedType = {}
-        this._selectedBrand = {}
-
+        this._orderedBalls = []
         makeAutoObservable(this)
-    }
-    setSelectedType(type) {
-
-        this._selectedType = type
-    }
-    setSelectedBrand(brand) {
-        this._selectedBrand = brand
     }
     setBalls(balls) {
         this._balls = balls
+    }
 
+    setOrderedBall(balls) {
+        // if (!this._orderedBalls.some(orderBall => orderBall.id === ball.id))
+        // {
+        //     this._orderedBalls.push(ball)
+        // }
+        this._orderedBalls = balls
     }
 
     get balls() {
         return this._balls
     }
-    get types() {
-        return this._types
-    }
-    get brands() {
-        return this._brands
-    }
-    get devices() {
-        return this._devices
-    }
-
-    setTypes(types) {
-        this._type = types
-    }
-    setBrands(brands) {
-        this._brands = brands
+    get orderedBalls() {
+        return this._orderedBalls
     }
 }

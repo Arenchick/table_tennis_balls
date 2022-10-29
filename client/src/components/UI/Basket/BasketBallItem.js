@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import DeleteButton from "../Buttons/DeleteButton";
 import BallItemComponent from "../Balls/BallItemComponent";
 import BasketBallCounter from "./BasketBallCounter";
@@ -6,10 +6,13 @@ import GreenButton from "../Buttons/GreenButton";
 import CheckboxRadioButton from "../Input/CheckboxRadioButton";
 import {ORDER_PAGE_ROUTE} from "../../../utils/Consts";
 import {useHistory} from "react-router-dom";
+import {Context} from "../../../App";
 
 const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unselect}) => {
 
     const history = useHistory()
+
+    const {ballStore} = useContext(Context)
 
     const selectBall = (checked) => {
         if (checked){
@@ -22,7 +25,7 @@ const BasketBallItem = ({basketBall, deleteBasketBall, changeCount, select, unse
 
     const buyBall = (event) => {
         event.stopPropagation()
-
+        ballStore.setOrderedBall([basketBall])
         // === BUY ===
         history.push(`${ORDER_PAGE_ROUTE}`)
     }
