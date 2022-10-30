@@ -34,7 +34,7 @@ const AdminBallList = () => {
         <div style={{marginTop: '1rem'}} className={'Admin_BallList'}>
             <h2>Текущие мячи:</h2>
             {balls.map(ball =>
-                <div className={'Admin_BallListItem'}>
+                <div key={ball.id} className={'Admin_BallListItem'}>
                     <p>{balls.indexOf(ball)+1}) {ball.name}</p>
                     <DeleteButtonRed click={(event)=>{deleteBall(event, ball.id)}}/>
                 </div>

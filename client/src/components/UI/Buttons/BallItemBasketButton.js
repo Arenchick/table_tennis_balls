@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import basketPicture from "../../../Assets/Basket.png";
 import {changeBasketBallCount, createBasketBall, getOneBasketBallCount} from "../../../http/BasketApi";
 import {Context} from "../../../App";
@@ -9,6 +9,16 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
 
     const {user} = useContext(Context)
     const history = useHistory()
+
+    const [isAdded, setIsAdded] = useState(false)
+
+    useEffect(()=>{
+        getOneBasketBallCount(ballId).then(data => {
+            if (data > 0)
+                setIsAdded(true)
+        })
+    },[])
+
     const addingInBasket = (event) => {
         event.stopPropagation()
 
@@ -21,12 +31,12 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
             if(data >= 1){
                 // ===============ball=====count======================================================================================================
                 changeBasketBallCount(ballId, data+1).then(data => {
-                    alert('Увеличено кол-во')
+                    setIsAdded(true)
                 })
             }
             else {
                 createBasketBall(user.user.id, ballId).then(data => {
-                    alert('Добавлено')
+                    setIsAdded(true)
                 })
 
             }
@@ -37,7 +47,10 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
         <div className={`button ${ClassName}`}
              style={{marginRight: "10px"}}
              onClick={addingInBasket}>
-            <div style={{marginRight: "5px"}}>В корзину</div>
+            {!isAdded ?
+                <div style={{marginRight: "5px"}}>В корзину</div> :
+                <div style={{marginRight: "5px"}}>Уже в корзине</div>
+            }
             <img width={17.5}
                  height={17.5}
                  src={basketPicture}
