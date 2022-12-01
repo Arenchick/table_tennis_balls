@@ -18,9 +18,9 @@ const Header = (props) => {
         return (
         <div className={'header'} >
             <div className={'header_content'}>
-                <div className={'header_logo'}
+                <div className={'header_logo_container'}
                      onClick={(event) => logoClick(event)}>
-                    <img alt={'BestBalls'} src={logo}/>
+                    <img className={'header_logo'} alt={'BestBalls'} src={logo}/>
                 </div>
                 <HeaderNavBar/>
                 <HeaderBasketLogin/>

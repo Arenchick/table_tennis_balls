@@ -39,6 +39,12 @@ const AdminBallCreate = () => {
         })
     }
 
+    const formatSetName = e => {
+        console.log(e.target.value)
+        if (e.target.value.length <= 15)
+            setName(e.target.value)
+    }
+
     return (
         <div className={'Admin_BallCreateContainer'}>
             <h6>Название</h6>
@@ -46,7 +52,7 @@ const AdminBallCreate = () => {
                          inputtype={'auth'}
                          type='text'
                          value={name}
-                         onChange={e => setName(e.target.value)}/>
+                         onChange={formatSetName}/>
             <h6>Цена</h6>
             <TennisInput type='number'
                          inputtype={'auth'}
