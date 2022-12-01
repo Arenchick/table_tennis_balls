@@ -64,7 +64,7 @@ const Basket = observer(() => {
     },[allBasketBalls])
 
     const changeBallCount = (ballId, newCount) => {
-        changeBasketBallCount(ballId,newCount).then(data => {
+        changeBasketBallCount(user.user.id, ballId, newCount).then(data => {
 
             const index = allBasketBalls.map(basketBall => basketBall.ball.id).indexOf(ballId)
             let count = data

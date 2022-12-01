@@ -21,13 +21,15 @@ class BasketBallController {
 
     async UpdateCount(request,response,next){
         try {
-            const {ballId} = request.params
+            const {ballId} = request.body
+            const {basketId} = request.body
             const {count} = request.body
+
 
             if (!ballId)
                 return next(ApiError.BadRequest("Такого элемента не существует"))
 
-            const changedRaws = await BasketBall.update({count: count},{where: {ballId}})
+            const changedRaws = await BasketBall.update({count: count},{where: {basketId, ballId}})
 
             if (changedRaws > 0)
             {
@@ -47,7 +49,7 @@ class BasketBallController {
         try {
             const {basketId} = request.query
 
-            const baskets = await BasketBall.findAll({
+            let baskets = await BasketBall.findAll({
                 where: {basketId},
                 include: {model: Ball, as: 'ball',
                     include: {model: BallInfo, as: 'ball_info', include: [
@@ -57,6 +59,27 @@ class BasketBallController {
                             {model: ProducerCountry, as: 'producer_country'}
                         ]}}
             })
+
+            let basketsForDeleteIds = []
+
+            baskets.forEach(basket => {
+                if (!basket.ball)
+                    basketsForDeleteIds.push(basket.id)
+            })
+
+            await BasketBall.destroy({where: {id : basketsForDeleteIds.map(baskets => baskets)}})
+
+            baskets = await BasketBall.findAll({
+                where: {basketId},
+                include: {model: Ball, as: 'ball',
+                    include: {model: BallInfo, as: 'ball_info', include: [
+                            {model: Type, as: 'type'},
+                            {model: Brand, as: 'brand'},
+                            {model: Star, as: 'star'},
+                            {model: ProducerCountry, as: 'producer_country'}
+                        ]}}
+            })
+
             return response.json(baskets)
         }
         catch (error){
@@ -91,8 +114,10 @@ class BasketBallController {
     async GetOneBallCount(request,response,next){
         try {
             const {ballId} = request.query
+            const {basketId} = request.query
 
-            const basketBall = await BasketBall.findOne({where: {ballId}})
+
+            const basketBall = await BasketBall.findOne({where: {basketId,ballId}})
 
             if (basketBall)
                 return response.json(basketBall.count)

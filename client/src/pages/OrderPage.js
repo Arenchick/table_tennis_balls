@@ -5,6 +5,7 @@ import {observer} from "mobx-react-lite";
 import GreenButton from "../components/UI/Buttons/GreenButton";
 import {useHistory} from "react-router-dom";
 import {BASKET_ROUTE} from "../utils/Consts";
+import {sendMail} from "../http/mailApi";
 
 const OrderPage = observer(() => {
 
@@ -32,24 +33,26 @@ const OrderPage = observer(() => {
     }
 
     const send = (event) => {
-        let orderMailText = 'Заказ:\n'
+        let orderMailTextForAdmin = ''
+        let orderMailText = 'Заказ:\n\n'
 
         ballStore.orderedBalls.forEach(orderedBall => {
             orderMailText += `• ${orderedBall.ball.name}, ${orderedBall.count} шт. -   ${orderedBall.count*orderedBall.ball.price} руб.\n`
         })
 
-        orderMailText += `Всего: ${allPrice} руб.\n`
+        orderMailText += `\nВсего: ${allPrice} руб.\n`
+        orderMailTextForAdmin = `${orderMailText}`
+        orderMailTextForAdmin += `\nНомер телефона заказчика: ${user.user.phone}\nПочта заказчика: ${user.user.email}`
         orderMailText += 'В ближайшее время мы с вами свяжимся'
 
-        console.log(orderMailText)
         setIsSended(true)
 
-        // sendMail('Arenchik1@yandex.ru',
-        //     orderMailText
-        // ).then(data => {
-        // setIsSended(true)
-        //     console.log(data)
-        // })
+        sendMail(user.user.email,
+            orderMailText
+        ).then(data => {
+            sendMail(process.env.REACT_APP_EMAIL, orderMailTextForAdmin).then(data => console.log(''))
+            setIsSended(true)
+        })
     }
 
     return (

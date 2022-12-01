@@ -1,4 +1,5 @@
 import {$authHost} from "./index";
+import basket from "../pages/Basket";
 
 export const getAllBasketBalls = async (basketId) => {
     const {data} = await $authHost.get('api/basketBall' , {params: {basketId}})
@@ -10,18 +11,18 @@ export const getAllBasketBallsCount = async () => {
     return data
 }
 
-export const getOneBasketBallCount = async (ballId) => {
-    const {data} = await $authHost.get('api/basketBall/count', {params: {ballId}})
+export const getOneBasketBallCount = async (basketId, ballId) => {
+    const {data} = await $authHost.get('api/basketBall/count', {params: {basketId,ballId}})
     return data
 }
 
-export const createBasketBall = async (basketId, ballId) => {
-    const {data} = await $authHost.post('api/basketBall', {basketId, ballId})
+export const createBasketBall = async (basketId,ballId) => {
+    const {data} = await $authHost.post('api/basketBall', {basketId,ballId})
     return data
 }
 
-export const changeBasketBallCount = async (ballId, count) => {
-    const {data} = await $authHost.put(`api/basketBall/${ballId}`,{count})
+export const changeBasketBallCount = async (basketId, ballId, count) => {
+    const {data} = await $authHost.put('api/basketBall',{ballId,basketId,count})
     return data
 }
 

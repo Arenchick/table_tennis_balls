@@ -6,19 +6,18 @@ class OrderSendMailController {
         try {
             const {sendler,textMessage} = request.query
 
-            console.log(sendler,textMessage)
+            console.log(sendler + '\n======\n' + textMessage)
 
             const transporter = nodemailer.createTransport({
-
-                service:'gmail',
-                auth:{
+                service: 'Yandex',
+                auth: {
                     user:process.env.EMAIL,
-                    pass:process.env.PASSWORD
+                    pass:process.env.EMAIL_PASSWORD
                 }
+            });
 
-            })
             const mailOptions = {
-                from:'malysheff33ml@gmail.com',
+                from:process.env.EMAIL,
                 to:sendler,
                 subject:'Заказ на сайте bestballs.ru',
                 text:textMessage

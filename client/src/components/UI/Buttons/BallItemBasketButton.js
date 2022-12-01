@@ -4,6 +4,7 @@ import {changeBasketBallCount, createBasketBall, getOneBasketBallCount} from "..
 import {Context} from "../../../App";
 import {useHistory} from "react-router-dom";
 import {LOGIN_ROUTE} from "../../../utils/Consts";
+import ballItemBasketButton from "./BallItemBasketButton";
 
 const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) => {
 
@@ -13,7 +14,7 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
     const [isAdded, setIsAdded] = useState(false)
 
     useEffect(()=>{
-        getOneBasketBallCount(ballId).then(data => {
+        getOneBasketBallCount(user.user.id,ballId).then(data => {
             if (data > 0)
                 setIsAdded(true)
         })
@@ -27,12 +28,16 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
             return
         }
 
-        getOneBasketBallCount(ballId).then(data => {
+        getOneBasketBallCount(user.user.id,ballId).then(data => {
             if(data >= 1){
                 // ===============ball=====count======================================================================================================
-                changeBasketBallCount(ballId, data+1).then(data => {
+                changeBasketBallCount(user.user.id, ballId, data+1).then(data => {
                     setIsAdded(true)
                 })
+
+                // changeBasketBallCount(user.user.id, ballId, data+1).then(data => {
+                //     setIsAdded(true)
+                // })
             }
             else {
                 createBasketBall(user.user.id, ballId).then(data => {

@@ -15,6 +15,8 @@ const Auth = observer(() => {
     const history = useHistory()
     const isLogin = location.pathname === LOGIN_ROUTE
 
+    const [authErrorIsHidden, setAuthErrorIsHidden] = useState(true)
+
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -42,12 +44,13 @@ const Auth = observer(() => {
             history.push(BALLS_ROUTE)
 
         } catch (e) {
-            alert(e)
+            setAuthErrorIsHidden(false)
         }
     }
     return (
         <div className={'Auth'}>
             <h2 className={'Auth_Title'}>{isLogin ? 'Авторизация' : "Регистрация"}</h2>
+            <h6 className={'Auth_Error'} hidden={authErrorIsHidden}>Не удалось авторизоваться</h6>
             <AuthForm name={name}
                       email={email}
                       password={password}
