@@ -39,8 +39,7 @@ const Basket = observer(() => {
     }
 
     useEffect(()=>{
-        getAllBasketBalls(user.user.id).then(data =>{
-
+        getAllBasketBalls(user.basketId).then(data =>{
             let balls = [...data]
             balls.forEach(basketBall => basketBall.selected = true)
 
@@ -48,7 +47,7 @@ const Basket = observer(() => {
 
             setAllPrice(getAllPrice(data))
         })
-    },[user.user])
+    },[user.basketId])
 
     useEffect(()=>{
         let price = 0
@@ -64,7 +63,7 @@ const Basket = observer(() => {
     },[allBasketBalls])
 
     const changeBallCount = (ballId, newCount) => {
-        changeBasketBallCount(user.user.id, ballId, newCount).then(data => {
+        changeBasketBallCount(user.basketId, ballId, newCount).then(data => {
 
             const index = allBasketBalls.map(basketBall => basketBall.ball.id).indexOf(ballId)
             let count = data
@@ -128,9 +127,13 @@ const Basket = observer(() => {
             <BasketBallsList basketBalls={allBasketBalls} deleteBasketBall={deleteBasketBall} changeCount={changeBallCount} select={select} unselect={unselect}/>
             <div className={'Basket_Order_List'}>
                 <h2 className={'Basket_Order_List_Title'}>Заказ</h2>
-                {selectedBasketBalls.map(basketBall =>
-                    <p key={basketBall.ball.id} className={'Basket_Order_List_Ball_Name'}>• {basketBall.ball.name}, {basketBall.count}шт</p>
-                )}
+                {selectedBasketBalls.length > 0 ?
+                    selectedBasketBalls.map(basketBall =>
+                        <p key={basketBall.ball.id} className={'Basket_Order_List_Ball_Name'}>• {basketBall.ball.name}, {basketBall.count}шт</p>
+                    ) :
+                    <p>Корзина пуста...</p>
+                }
+
                 <h3 className={'Basket_Order_List_Price'}>{allPrice} р.</h3>
                 <div className={'Basket_Order_List_Buy_Button_Container'}>
                     <GreenButton text={'Оформить'} click={orderClick}/>

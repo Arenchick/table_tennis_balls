@@ -10,6 +10,7 @@ import UserStore from "./store/UserStore";
 import BallStore from "./store/BallStore";
 import FiltersStore from "./store/FiltersStore";
 import AdminParametersStore from "./store/AdminParametersStore";
+import {getOneBasket} from "./http/BasketApi";
 
 export const Context = createContext(null)
 
@@ -23,6 +24,11 @@ const App = () => {
             if (data){
                 userStore.setUser(data)
                 userStore.setIsAuth(true)
+
+                getOneBasket(data.id).then(data => {
+                    if (data)
+                        userStore.setBasketId(data.id)
+                })
             }
         }).finally(()=>{setLoad(true)})
     }, [])

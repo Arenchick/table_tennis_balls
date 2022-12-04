@@ -22,6 +22,18 @@ class BasketController {
         }
     }
 
+    async GetOne(request,response,next){
+        try {
+            const {userId} = request.params
+
+            const basket = await Basket.findOne({where: {userId}})
+            return response.json(basket)
+        }
+        catch (error){
+            return next(ApiError.BadRequest(error.message))
+        }
+    }
+
     async DeleteOne(request,response,next){
         try {
             const {id} = request.params

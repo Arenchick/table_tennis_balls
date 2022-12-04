@@ -1,8 +1,12 @@
 import {$authHost} from "./index";
-import basket from "../pages/Basket";
 
 export const getAllBasketBalls = async (basketId) => {
     const {data} = await $authHost.get('api/basketBall' , {params: {basketId}})
+    return data
+}
+
+export const getOneBasket = async (userId) => {
+    const {data} = await $authHost.get(`api/basket/${userId}`)
     return data
 }
 

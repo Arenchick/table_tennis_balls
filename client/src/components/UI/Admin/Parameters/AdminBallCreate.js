@@ -40,9 +40,15 @@ const AdminBallCreate = () => {
     }
 
     const formatSetName = e => {
-        console.log(e.target.value)
-        if (e.target.value.length <= 15)
-            setName(e.target.value)
+        let value = e.target.value
+        let index = 0
+        if (value.length <= 15)
+            index = value.lastIndexOf(' ')
+
+        let result = [value.slice(0, index), '\n', value.slice(index)].join('');
+
+        console.log(result)
+        setName(result)
     }
 
     return (
@@ -53,6 +59,7 @@ const AdminBallCreate = () => {
                          type='text'
                          value={name}
                          onChange={formatSetName}/>
+                         {/*onChange={e => setName(e.target.value)}/>*/}
             <h6>Цена</h6>
             <TennisInput type='number'
                          inputtype={'auth'}

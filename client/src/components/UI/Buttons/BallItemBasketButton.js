@@ -14,7 +14,7 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
     const [isAdded, setIsAdded] = useState(false)
 
     useEffect(()=>{
-        getOneBasketBallCount(user.user.id,ballId).then(data => {
+        getOneBasketBallCount(user.basketId,ballId).then(data => {
             if (data > 0)
                 setIsAdded(true)
         })
@@ -28,10 +28,10 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
             return
         }
 
-        getOneBasketBallCount(user.user.id,ballId).then(data => {
+        getOneBasketBallCount(user.basketId,ballId).then(data => {
             if(data >= 1){
                 // ===============ball=====count======================================================================================================
-                changeBasketBallCount(user.user.id, ballId, data+1).then(data => {
+                changeBasketBallCount(user.basketId, ballId, data+1).then(data => {
                     setIsAdded(true)
                 })
 
@@ -40,7 +40,7 @@ const BallItemBasketButton = ({ballId, ClassName = 'ball_item_basket_button'}) =
                 // })
             }
             else {
-                createBasketBall(user.user.id, ballId).then(data => {
+                createBasketBall(user.basketId, ballId).then(data => {
                     setIsAdded(true)
                 })
 
