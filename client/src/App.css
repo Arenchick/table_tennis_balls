@@ -53,6 +53,9 @@ p {
   padding: 0;
   margin: 0;
 }
+p {
+  white-space: pre-wrap;
+}
 a {
   text-decoration: none;
 }
@@ -864,6 +867,9 @@ input::-webkit-inner-spin-button {
   .LogOut_Email {
     font-size: 10px;
   }
+}
+.Admin_Text {
+  margin-top: 50px;
 }
 .Admin_ParametersList {
   width: 40%;

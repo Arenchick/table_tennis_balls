@@ -5,6 +5,7 @@ import AdminBallList from "../components/UI/Admin/Parameters/AdminBallList";
 import {Context} from "../App";
 import {useHistory} from "react-router-dom";
 import {BALLS_ROUTE} from "../utils/Consts";
+import AdminTextChanger from "../components/UI/Admin/Parameters/AdminTextChanger";
 
 const Admin = () => {
 
@@ -19,8 +20,10 @@ const Admin = () => {
             <div style={{display:"flex", justifyContent:"space-between"}}>
                 <AdminParametersList/>
                 <AdminBallCreate/>
+
             </div>
             <AdminBallList/>
+            <AdminTextChanger/>
         </div>
     );
 };

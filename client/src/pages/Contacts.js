@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {fetchContactText} from "../http/textApi";
 
 const Contacts = () => {
+
+    useEffect(()=>{
+        fetchContactText().then(data=>{
+            setText(data)
+        })
+    },[])
+
+    const [text, setText] = useState('')
+
     return (
-        <div>
-           <h2>Являемся официальным поставщиком мячей для настольного тенниса по Российской Федерации</h2>
-            <br/>
-            <h3>С нами сотрудничают команды Московской, Владимирской, Нижегородской областей.</h3>
+        <div style={{textAlign: "center"}}>
+            <h2 className={'Basket_Order_List_Title'}>Контакты</h2>
+            <p>{text}</p>
         </div>
     );
 };

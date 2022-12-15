@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {fetchAboutText} from "../http/textApi";
 
 const About = () => {
+
+    useEffect(()=>{
+        fetchAboutText().then(data=>{
+            setText(data)
+        })
+    },[])
+
+    const [text, setText] = useState('')
+
     return (
-        <div>
-            В нашем магазине вы можете приобрести всё для настольного тенниса!
-            Основным направлением деятельности нашей компании, является настольный теннис.
-            <h3>Контактный номер для связи - 88005553535</h3>
-            <h2>Вы всегда можете сделать свой заказ через наш интернет-магазин.
-                Мы всегда рады помочь Вам!</h2>
+        <div style={{textAlign: "center"}}>
+            <h2 className={'Basket_Order_List_Title'}>О нас</h2>
+            <p>{text}</p>
         </div>
     );
 };

@@ -13,6 +13,7 @@ const Basket = observer(() => {
 
     const {user,ballStore} = useContext(Context)
 
+    const [isLoaded, setIsLoaded] = useState(false)
     const [allBasketBalls, setAllBasketBalls] = useState([])
     const [selectedBasketBalls, setSelectedBasketBalls] = useState([])
     const [allPrice, setAllPrice] = useState(0)
@@ -46,6 +47,8 @@ const Basket = observer(() => {
             setAllBasketBalls(balls)
 
             setAllPrice(getAllPrice(data))
+
+            setIsLoaded(true)
         })
     },[user.basketId])
 
@@ -123,6 +126,7 @@ const Basket = observer(() => {
     }
 
     return (
+        isLoaded ?
         <div className={'Basket_Page'}>
             <BasketBallsList basketBalls={allBasketBalls} deleteBasketBall={deleteBasketBall} changeCount={changeBallCount} select={select} unselect={unselect}/>
             <div className={'Basket_Order_List'}>
@@ -139,7 +143,11 @@ const Basket = observer(() => {
                     <GreenButton text={'Оформить'} click={orderClick}/>
                 </div>
             </div>
-        </div>
+        </div> :
+            <div>
+                <h2 className={'Basket_Order_List_Title'} style={{textAlign: "center"}}>Загрузка...</h2>
+            </div>
+
     );
 });
 

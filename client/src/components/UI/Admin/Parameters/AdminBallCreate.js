@@ -34,7 +34,7 @@ const AdminBallCreate = () => {
             newBall.append('ballInfoId', data.id)
 
             createBall(newBall).then(data => {
-                console.log(data)
+                alert("Добавлено")
             })
         })
     }
